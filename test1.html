@@ -1,0 +1,6623 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link
+        rel="icon"
+        href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='90 80 330 380'%3E%3Cdefs%3E%3ClinearGradient id='mainGradient' x1='150' y1='100' x2='320' y2='380' gradientUnits='userSpaceOnUse'%3E%3Cstop offset='0%25' stop-color='%2300A2FF'/%3E%3Cstop offset='45%25' stop-color='%2300D2D3'/%3E%3Cstop offset='100%25' stop-color='%2310E383'/%3E%3C/linearGradient%3E%3ClinearGradient id='leafGradient' x1='290' y1='210' x2='400' y2='100' gradientUnits='userSpaceOnUse'%3E%3Cstop offset='0%25' stop-color='%2300A2FF'/%3E%3Cstop offset='100%25' stop-color='%2310E383'/%3E%3C/linearGradient%3E%3C/defs%3E%3Cpath d='M305 210 C300 170 325 130 400 95 C400 135 385 185 335 208 C325 212 312 213 305 210 Z' fill='url(%23leafGradient)'/%3E%3Cpath d='M230 180 L295 155 L295 275 C295 340 240 375 180 375 C120 375 100 335 110 295 C115 270 145 270 152 280 C160 292 172 312 192 312 C220 312 235 290 235 265 L235 210 L215 210 Z' fill='url(%23mainGradient)'/%3E%3C/svg%3E"
+    >
+  <title>Jify</title>
+
+  <style>
+
+/* ==========================================================
+   Jify — BENTO UI
+   WHITE BASE / BLUE PRIMARY / GREEN SECONDARY
+   CSS ONLY — HTML + JS UNCHANGED
+========================================================== */
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --bg: #f4f8f7;
+  --bg-2: #eef5f3;
+
+  --white: #ffffff;
+  --white-soft: #fbfefd;
+
+  /* PRIMARY */
+  --blue: #2563eb;
+  --blue-dark: #1d4ed8;
+  --blue-soft: #eff6ff;
+  --blue-soft-2: #dbeafe;
+  --blue-line: #bfdbfe;
+
+  /* SECONDARY */
+  --green: #159947;
+  --green-dark: #107a38;
+  --green-soft: #ecfdf3;
+  --green-soft-2: #d1fae0;
+  --green-line: #b7ebc9;
+
+  /* TERTIARY */
+  --cyan: #0891b2;
+  --cyan-soft: #ecfeff;
+  --cyan-line: #bae6fd;
+
+  /* TEXT */
+  --text: #14201a;
+  --text-2: #33423a;
+  --muted: #6e7d75;
+  --muted-2: #97a69f;
+
+  /* BORDERS */
+  --border: #dce7e2;
+  --border-2: #cbd9d3;
+  --border-soft: #e9f0ed;
+
+  /* STATUS */
+  --danger: #c92f45;
+  --danger-soft: #fff1f3;
+
+  /* SHADOWS */
+  --shadow-xs:
+    0 1px 2px rgba(18, 36, 27, .035);
+
+  --shadow-sm:
+    0 5px 18px rgba(18, 36, 27, .055);
+
+  --shadow-md:
+    0 12px 32px rgba(18, 36, 27, .075);
+
+  --shadow-lg:
+    0 20px 55px rgba(18, 36, 27, .105);
+
+  --radius-sm: 10px;
+  --radius-md: 14px;
+  --radius-lg: 20px;
+  --radius-xl: 24px;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  min-height: 100vh;
+
+  background:
+    radial-gradient(
+      circle at 12% 5%,
+      rgba(37, 99, 235, .06),
+      transparent 25%
+    ),
+    radial-gradient(
+      circle at 87% 16%,
+      rgba(21, 153, 71, .055),
+      transparent 25%
+    ),
+    linear-gradient(
+      180deg,
+      #f9fcfb 0%,
+      var(--bg) 55%,
+      #edf5f2 100%
+    );
+
+  color: var(--text);
+
+  font-family:
+    Inter,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    Arial,
+    sans-serif;
+
+  line-height: 1.5;
+}
+
+button,
+input,
+select,
+textarea {
+  font: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+
+/* ==========================================================
+   PAGE
+========================================================== */
+
+.page {
+  min-height: 100vh;
+
+  display: flex;
+  flex-direction: column;
+}
+
+
+/* ==========================================================
+   HEADER — BENTO BAR
+========================================================== */
+
+header {
+  position: sticky;
+  top: 12px;
+  z-index: 100;
+
+  width: min(1480px, 94%);
+  height: 72px;
+
+  margin: 12px auto 0;
+
+  border:
+    1px solid var(--border);
+
+  border-radius:
+    var(--radius-lg);
+
+  background:
+    rgba(255, 255, 255, .9);
+
+  box-shadow:
+    var(--shadow-sm);
+
+  backdrop-filter:
+    blur(18px);
+
+  -webkit-backdrop-filter:
+    blur(18px);
+}
+
+.header-inner {
+  width: 100%;
+  height: 100%;
+
+  padding:
+    8px 10px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 12px;
+}
+
+
+/* ==========================================================
+   BRAND CARD
+========================================================== */
+
+.brand {
+  min-width: 0;
+
+  height: 54px;
+
+  padding:
+    0 14px;
+
+  display: flex;
+  align-items: center;
+
+  gap: 13px;
+
+  border-radius:
+    var(--radius-md);
+
+  background:
+    linear-gradient(
+      135deg,
+      #ffffff,
+      #f5fbf9
+    );
+
+  border:
+    1px solid var(--border-soft);
+
+  transition:
+    transform .18s ease,
+    border-color .18s ease,
+    box-shadow .18s ease;
+}
+
+.brand:hover {
+  border-color:
+    var(--blue-line);
+
+  box-shadow:
+    0 5px 18px rgba(37, 99, 235, .08);
+
+  transform:
+    translateY(-1px);
+}
+
+.brand-logo {
+  width: 160px;
+  height: auto;
+  display: block;
+}
+
+.brand-tag {
+  height: 27px;
+
+  display: flex;
+  align-items: center;
+
+  padding-left: 13px;
+
+  color:
+    var(--blue);
+
+  font-size: 9px;
+  font-weight: 800;
+
+  letter-spacing: 1px;
+
+  border-left:
+    1px solid var(--border);
+}
+
+
+/* ==========================================================
+   HEADER ACTIONS
+========================================================== */
+
+header .toolbar-group {
+  height: 54px;
+
+  padding:
+    7px;
+
+  display: flex;
+  align-items: center;
+
+  gap: 6px;
+
+  border-radius:
+    var(--radius-md);
+
+  background:
+    #f7faf9;
+
+  border:
+    1px solid var(--border-soft);
+}
+
+
+/* ==========================================================
+   MAIN
+========================================================== */
+
+main {
+  width:
+    min(1480px, 94%);
+
+  margin:
+    30px auto
+    65px;
+
+  flex: 1;
+}
+
+
+/* ==========================================================
+   HERO
+========================================================== */
+
+.hero {
+  position: relative;
+
+  overflow: hidden;
+
+  margin-bottom:
+    18px;
+
+  padding:
+    28px 30px;
+
+  border-radius:
+    var(--radius-xl);
+
+  border:
+    1px solid var(--border);
+
+  background:
+    linear-gradient(
+      135deg,
+      #ffffff 0%,
+      #f7fbff 58%,
+      #f1fcf6 100%
+    );
+
+  box-shadow:
+    var(--shadow-sm);
+}
+
+.hero::after {
+  content: "";
+
+  position: absolute;
+
+  right: -40px;
+  top: -70px;
+
+  width: 210px;
+  height: 210px;
+
+  border-radius: 50%;
+
+  background:
+    radial-gradient(
+      circle,
+      rgba(37, 99, 235, .12),
+      rgba(37, 99, 235, 0)
+    );
+
+  pointer-events: none;
+}
+
+.hero h1 {
+  position: relative;
+  z-index: 2;
+
+  font-size:
+    clamp(29px, 4vw, 43px);
+
+  line-height: 1.15;
+
+  /* Letter spacing */
+  letter-spacing:
+    -1.4px;
+
+  font-weight:
+    800;
+
+  /* 2-color gradient */
+  background:
+    linear-gradient(
+      135deg,
+      #1d4ed8 0%,
+      #38bdf8 7%
+    );
+
+  -webkit-background-clip:
+    text;
+
+  background-clip:
+    text;
+
+  -webkit-text-fill-color:
+    transparent;
+
+  color:
+    transparent;
+
+  /* Prevent descenders such as "y" from getting clipped */
+  padding-bottom:
+    5px;
+
+  margin-bottom:
+    -5px;
+
+  filter:
+    drop-shadow(
+      0 3px 5px
+      rgba(37, 99, 235, .14)
+    );
+}
+
+.hero p {
+  position: relative;
+  z-index: 2;
+
+  max-width:
+    800px;
+
+  margin-top:
+    10px;
+
+  color:
+    var(--muted);
+
+  font-size:
+    13px;
+
+  line-height:
+    1.75;
+}
+
+
+/* ==========================================================
+   TOOLBAR
+========================================================== */
+
+.toolbar {
+  display: grid;
+
+  grid-template-columns:
+    1fr auto;
+
+  gap: 12px;
+
+  margin-bottom:
+    12px;
+}
+
+.toolbar-group {
+  min-height:
+    50px;
+
+  display:
+    flex;
+
+  align-items:
+    center;
+
+  gap:
+    7px;
+
+  flex-wrap:
+    wrap;
+
+  padding:
+    7px;
+
+  border:
+    1px solid var(--border);
+
+  border-radius:
+    var(--radius-md);
+
+  background:
+    rgba(255, 255, 255, .88);
+
+  box-shadow:
+    var(--shadow-xs);
+}
+
+
+/* ==========================================================
+   BUTTONS
+========================================================== */
+
+.btn {
+  min-height:
+    35px;
+
+  padding:
+    8px 11px;
+
+  border-radius:
+    9px;
+
+  border:
+    1px solid var(--border);
+
+  background:
+    #ffffff;
+
+  color:
+    var(--text-2);
+
+  font-size:
+    10px;
+
+  font-weight:
+    700;
+
+  transition:
+    transform .16s ease,
+    border-color .16s ease,
+    box-shadow .16s ease,
+    background .16s ease,
+    color .16s ease;
+}
+
+.btn:hover {
+  transform:
+    translateY(-1px);
+
+  border-color:
+    var(--border-2);
+
+  box-shadow:
+    var(--shadow-xs);
+
+  background:
+    #fbfefd;
+}
+
+.btn:active {
+  transform:
+    translateY(0);
+}
+
+.btn:disabled {
+  opacity:
+    .4;
+
+  cursor:
+    not-allowed;
+
+  transform:
+    none;
+
+  box-shadow:
+    none;
+}
+
+
+/* PRIMARY BLUE */
+
+.btn.primary {
+  background:
+    var(--blue);
+
+  color:
+    #ffffff;
+
+  border-color:
+    var(--blue);
+
+  box-shadow:
+    0 5px 15px rgba(37, 99, 235, .17);
+}
+
+.btn.primary:hover {
+  background:
+    var(--blue-dark);
+
+  border-color:
+    var(--blue-dark);
+}
+
+
+/* SECONDARY GREEN */
+
+.btn.success {
+  background:
+    var(--green-soft);
+
+  color:
+    var(--green-dark);
+
+  border-color:
+    var(--green-line);
+}
+
+.btn.success:hover {
+  background:
+    var(--green-soft-2);
+
+  border-color:
+    #96ddb0;
+}
+
+
+/* DANGER */
+
+.btn.danger {
+  color:
+    var(--danger);
+
+  background:
+    var(--danger-soft);
+
+  border-color:
+    #f3c8cf;
+}
+
+.btn.danger:hover {
+  background:
+    #ffe7eb;
+}
+
+
+/* ==========================================================
+   FILENAME
+========================================================== */
+
+.filename {
+  display:
+    flex;
+
+  align-items:
+    center;
+
+  gap:
+    5px;
+
+  color:
+    var(--muted);
+
+  font-size:
+    9px;
+
+  font-weight:
+    700;
+}
+
+.filename input {
+  width:
+    132px;
+}
+
+
+/* ==========================================================
+   TERTIARY TOOLBAR / SEARCH
+========================================================== */
+
+.secondary-toolbar {
+  display:
+    grid;
+
+  grid-template-columns:
+    minmax(230px, 1fr)
+    auto;
+
+  gap:
+    12px;
+
+  margin-bottom:
+    14px;
+}
+
+.search-box {
+  position:
+    relative;
+
+  min-width:
+    0;
+
+  padding:
+    7px;
+
+  border:
+    1px solid var(--border);
+
+  border-radius:
+    var(--radius-md);
+
+  background:
+    rgba(255, 255, 255, .9);
+
+  box-shadow:
+    var(--shadow-xs);
+}
+
+.search-box input {
+  height:
+    36px;
+
+  padding-left:
+    32px;
+
+  border:
+    0;
+
+  background:
+    #f7faf9;
+
+  box-shadow:
+    none;
+}
+
+.search-box input:focus {
+  border:
+    1px solid var(--blue-line);
+
+  box-shadow:
+    0 0 0 3px
+    rgba(37, 99, 235, .06);
+}
+
+.search-icon {
+  position:
+    absolute;
+
+  left:
+    18px;
+
+  top:
+    50%;
+
+  transform:
+    translateY(-50%);
+
+  z-index:
+    2;
+
+  color:
+    var(--blue);
+
+  pointer-events:
+    none;
+
+  font-size:
+    14px;
+}
+
+.secondary-toolbar > .toolbar-group {
+  justify-content:
+    center;
+
+  min-width:
+    max-content;
+}
+
+
+/* ==========================================================
+   MAIN BENTO GRID
+========================================================== */
+
+.layout {
+  display:
+    grid;
+
+  grid-template-columns:
+    minmax(0, 1.08fr)
+    minmax(0, .92fr);
+
+  gap:
+    14px;
+
+  align-items:
+    start;
+}
+
+
+/* ==========================================================
+   PANELS AS BENTO CARDS
+========================================================== */
+
+.panel {
+  min-width:
+    0;
+
+  overflow:
+    hidden;
+
+  background:
+    var(--white);
+
+  border:
+    1px solid var(--border);
+
+  border-radius:
+    var(--radius-xl);
+
+  box-shadow:
+    var(--shadow-sm);
+
+  transition:
+    box-shadow .18s ease,
+    transform .18s ease,
+    border-color .18s ease;
+}
+
+.panel:hover {
+  border-color:
+    #d4e1dc;
+
+  box-shadow:
+    var(--shadow-md);
+}
+
+.panel-head {
+  min-height:
+    54px;
+
+  padding:
+    11px 15px;
+
+  display:
+    flex;
+
+  justify-content:
+    space-between;
+
+  align-items:
+    center;
+
+  gap:
+    10px;
+
+  background:
+    linear-gradient(
+      90deg,
+      #ffffff,
+      #fbfefd
+    );
+
+  border-bottom:
+    1px solid var(--border);
+}
+
+.panel-head h2 {
+  color:
+    #16231c;
+
+  font-size:
+    11px;
+
+  font-weight:
+    800;
+
+  letter-spacing:
+    .2px;
+}
+
+.panel-head span {
+  color:
+    var(--muted-2);
+
+  font-size:
+    9px;
+
+  font-weight:
+    700;
+
+  padding:
+    5px 8px;
+
+  border-radius:
+    999px;
+
+  background:
+    #f2f7f5;
+
+  border:
+    1px solid var(--border-soft);
+}
+
+
+/* ==========================================================
+   BUILDER
+========================================================== */
+
+.builder {
+  min-height:
+    430px;
+
+  max-height:
+    720px;
+
+  overflow:
+    auto;
+
+  padding:
+    14px;
+
+  background:
+    #f8fbfa;
+}
+
+.builder::-webkit-scrollbar,
+.preview::-webkit-scrollbar {
+  width:
+    8px;
+
+  height:
+    8px;
+}
+
+.builder::-webkit-scrollbar-track,
+.preview::-webkit-scrollbar-track {
+  background:
+    transparent;
+}
+
+.builder::-webkit-scrollbar-thumb,
+.preview::-webkit-scrollbar-thumb {
+  background:
+    #cbd9d3;
+
+  border-radius:
+    999px;
+}
+
+.builder::-webkit-scrollbar-thumb:hover,
+.preview::-webkit-scrollbar-thumb:hover {
+  background:
+    #aebfb7;
+}
+
+
+/* ==========================================================
+   JSON NODES
+========================================================== */
+
+.node {
+  margin-bottom:
+    8px;
+}
+
+.node.hidden-search {
+  display:
+    none;
+}
+
+.node-inner {
+  padding:
+    9px;
+
+  background:
+    #ffffff;
+
+  border:
+    1px solid #e2ebe7;
+
+  border-radius:
+    var(--radius-md);
+
+  box-shadow:
+    0 1px 3px rgba(18, 36, 27, .025);
+
+  transition:
+    transform .16s ease,
+    border-color .16s ease,
+    box-shadow .16s ease;
+}
+
+.node-inner:hover {
+  transform:
+    translateY(-1px);
+
+  border-color:
+    #cbded5;
+
+  box-shadow:
+    var(--shadow-xs);
+}
+
+.node-row {
+  display:
+    grid;
+
+  grid-template-columns:
+    minmax(100px, 1fr)
+    112px
+    minmax(115px, 1.35fr)
+    auto;
+
+  gap:
+    7px;
+
+  align-items:
+    center;
+}
+
+.node-row.container-row {
+  grid-template-columns:
+    minmax(100px, 1fr)
+    112px
+    auto;
+}
+
+
+/* ==========================================================
+   FORM ELEMENTS
+========================================================== */
+
+input,
+select,
+textarea {
+  width:
+    100%;
+
+  color:
+    var(--text);
+
+  background:
+    #ffffff;
+
+  border:
+    1px solid #d7e2dd;
+
+  border-radius:
+    8px;
+
+  outline:
+    none;
+
+  padding:
+    9px 10px;
+
+  font-size:
+    10px;
+
+  transition:
+    border-color .16s ease,
+    box-shadow .16s ease,
+    background .16s ease;
+}
+
+input::placeholder,
+textarea::placeholder {
+  color:
+    #9aa8a2;
+}
+
+input:hover,
+select:hover,
+textarea:hover {
+  border-color:
+    #c2d2cb;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+  border-color:
+    var(--blue-line);
+
+  box-shadow:
+    0 0 0 3px
+    rgba(37, 99, 235, .06);
+
+  background:
+    #ffffff;
+}
+
+.value-input:disabled {
+  opacity:
+    .5;
+}
+
+
+/* ==========================================================
+   DELETE
+========================================================== */
+
+.remove {
+  width:
+    35px;
+
+  height:
+    35px;
+
+  border-radius:
+    8px;
+
+  border:
+    1px solid #f0cbd1;
+
+  background:
+    #fff8f9;
+
+  color:
+    var(--danger);
+
+  font-size:
+    15px;
+
+  transition:
+    background .16s ease,
+    border-color .16s ease;
+}
+
+.remove:hover {
+  background:
+    #ffedf0;
+
+  border-color:
+    #eab4bd;
+}
+
+
+/* ==========================================================
+   NESTED TREE
+========================================================== */
+
+.children {
+  margin:
+    9px 0 0 15px;
+
+  padding-left:
+    12px;
+
+  border-left:
+    2px solid #e7f2ed;
+}
+
+.node-tools {
+  display:
+    flex;
+
+  align-items:
+    center;
+
+  gap:
+    5px;
+
+  flex-wrap:
+    wrap;
+
+  margin-top:
+    8px;
+}
+
+.mini-btn,
+.collapse-toggle {
+  background:
+    #f7faf9;
+
+  border:
+    1px solid #dce7e2;
+
+  color:
+    #68766f;
+
+  transition:
+    background .16s ease,
+    border-color .16s ease,
+    color .16s ease,
+    transform .16s ease;
+}
+
+.mini-btn {
+  padding:
+    6px 8px;
+
+  border-radius:
+    7px;
+
+  font-size:
+    9px;
+
+  font-weight:
+    700;
+}
+
+.mini-btn:hover,
+.collapse-toggle:hover {
+  background:
+    var(--blue-soft);
+
+  border-color:
+    var(--blue-line);
+
+  color:
+    var(--blue);
+
+  transform:
+    translateY(-1px);
+}
+
+.collapse-toggle {
+  width:
+    27px;
+
+  height:
+    27px;
+
+  border-radius:
+    7px;
+
+  font-size:
+    10px;
+}
+
+.node.collapsed
+> .node-inner
+> .children,
+
+.node.collapsed
+> .node-inner
+> .node-tools {
+  display:
+    none;
+}
+
+.node.collapsed
+.collapse-toggle {
+  transform:
+    rotate(-90deg);
+}
+
+
+/* ==========================================================
+   ROOT ACTIONS
+========================================================== */
+
+.root-actions {
+  display:
+    flex;
+
+  flex-wrap:
+    wrap;
+
+  gap:
+    7px;
+
+  padding:
+    0 14px 14px;
+
+  background:
+    #f8fbfa;
+}
+
+
+/* ==========================================================
+   PREVIEW
+========================================================== */
+
+.preview-panel {
+  display:
+    flex;
+
+  flex-direction:
+    column;
+}
+
+.preview {
+  min-height:
+    430px;
+
+  max-height:
+    720px;
+
+  padding:
+    17px;
+
+  overflow:
+    auto;
+
+  background:
+    linear-gradient(
+      180deg,
+      #fbfefd 0%,
+      #f5faf8 100%
+    );
+}
+
+pre {
+  color:
+    #26362e;
+
+  font-family:
+    "SFMono-Regular",
+    Consolas,
+    "Liberation Mono",
+    Menlo,
+    monospace;
+
+  font-size:
+    11px;
+
+  line-height:
+    1.78;
+
+  white-space:
+    pre-wrap;
+
+  word-break:
+    break-word;
+}
+
+
+/* ==========================================================
+   PREVIEW FOOTER
+========================================================== */
+
+.preview-bottom {
+  min-height:
+    53px;
+
+  padding:
+    9px 14px;
+
+  display:
+    flex;
+
+  justify-content:
+    space-between;
+
+  align-items:
+    center;
+
+  flex-wrap:
+    wrap;
+
+  gap:
+    12px;
+
+  background:
+    #ffffff;
+
+  border-top:
+    1px solid var(--border);
+}
+
+.status {
+  color:
+    var(--muted);
+
+  font-size:
+    9px;
+
+  font-weight:
+    650;
+}
+
+.status.success {
+  color:
+    var(--green);
+}
+
+.status.error {
+  color:
+    var(--danger);
+}
+
+
+/* ==========================================================
+   LIVE STATS — GREEN / BLUE PILLS
+========================================================== */
+
+.stats {
+  display:
+    flex;
+
+  align-items:
+    center;
+
+  flex-wrap:
+    wrap;
+
+  gap:
+    6px;
+}
+
+.stat {
+  padding:
+    5px 7px;
+
+  border-radius:
+    999px;
+
+  background:
+    #f5faf8;
+
+  border:
+    1px solid var(--border-soft);
+
+  color:
+    var(--muted);
+
+  font-size:
+    8px;
+
+  font-weight:
+    700;
+}
+
+.stat strong {
+  color:
+    var(--blue-dark);
+
+  font-size:
+    9px;
+}
+
+
+/* ==========================================================
+   IMPORT MODAL
+========================================================== */
+
+.modal {
+  position:
+    fixed;
+
+  inset:
+    0;
+
+  z-index:
+    200;
+
+  display:
+    none;
+
+  align-items:
+    center;
+
+  justify-content:
+    center;
+
+  padding:
+    20px;
+
+  background:
+    rgba(19, 36, 29, .34);
+
+  backdrop-filter:
+    blur(8px);
+
+  -webkit-backdrop-filter:
+    blur(8px);
+}
+
+.modal.active {
+  display:
+    flex;
+}
+
+.modal-box {
+  width:
+    min(720px, 100%);
+
+  overflow:
+    hidden;
+
+  background:
+    #ffffff;
+
+  border:
+    1px solid var(--border);
+
+  border-radius:
+    var(--radius-xl);
+
+  box-shadow:
+    var(--shadow-lg);
+}
+
+.modal-head {
+  min-height:
+    54px;
+
+  padding:
+    12px 16px;
+
+  display:
+    flex;
+
+  align-items:
+    center;
+
+  justify-content:
+    space-between;
+
+  border-bottom:
+    1px solid var(--border);
+
+  background:
+    linear-gradient(
+      90deg,
+      #ffffff,
+      #f6fbf9
+    );
+}
+
+.modal-head h3 {
+  color:
+    var(--text);
+
+  font-size:
+    12px;
+
+  font-weight:
+    800;
+}
+
+.modal-close {
+  border:
+    0;
+
+  background:
+    transparent;
+
+  color:
+    var(--muted);
+
+  font-size:
+    20px;
+
+  transition:
+    color .16s ease,
+    transform .16s ease;
+}
+
+.modal-close:hover {
+  color:
+    var(--danger);
+
+  transform:
+    rotate(90deg);
+}
+
+.modal-content {
+  padding:
+    16px;
+}
+
+.modal-content textarea {
+  min-height:
+    310px;
+
+  font-family:
+    "SFMono-Regular",
+    Consolas,
+    monospace;
+
+  line-height:
+    1.65;
+
+  background:
+    #f8fbfa;
+}
+
+.modal-actions {
+  display:
+    flex;
+
+  justify-content:
+    flex-end;
+
+  gap:
+    7px;
+
+  padding:
+    13px 15px;
+
+  border-top:
+    1px solid var(--border);
+
+  background:
+    #f8fbfa;
+}
+
+
+/* ==========================================================
+   FOOTER — BENTO CONTACT WALL
+========================================================== */
+
+footer {
+  padding:
+    14px 0 20px;
+
+  background:
+    transparent;
+
+  border-top:
+    0;
+}
+
+.footer-inner {
+  width:
+    min(1480px, 94%);
+
+  min-height:
+    150px;
+
+  margin:
+    auto;
+
+  padding:
+    16px;
+
+  display:
+    grid;
+
+  grid-template-columns:
+    minmax(230px, .8fr)
+    minmax(0, 1.6fr);
+
+  gap:
+    12px;
+
+  background:
+    rgba(255, 255, 255, .84);
+
+  border:
+    1px solid var(--border);
+
+  border-radius:
+    var(--radius-xl);
+
+  box-shadow:
+    var(--shadow-sm);
+}
+
+
+/* ==========================================================
+   FOOTER BRAND CARD
+========================================================== */
+
+.footer-copy {
+  position:
+    relative;
+
+  min-height:
+    105px;
+
+  padding:
+    22px;
+
+  display:
+    flex;
+
+  flex-direction:
+    column;
+
+  justify-content:
+    center;
+
+  border-radius:
+    var(--radius-lg);
+
+  border:
+    1px solid var(--border-soft);
+
+  background:
+    linear-gradient(
+      135deg,
+      #f7fbff,
+      #effbf4
+    );
+
+  color:
+    var(--muted);
+
+  font-size:
+    10px;
+
+  line-height:
+    1.8;
+
+  overflow:
+    hidden;
+}
+
+.footer-copy::before {
+  content:
+    "";
+
+  position:
+    absolute;
+
+  width:
+    130px;
+
+  height:
+    130px;
+
+  right:
+    -50px;
+
+  bottom:
+    -55px;
+
+  border-radius:
+    50%;
+
+  background:
+    radial-gradient(
+      circle,
+      rgba(37,99,235,.12),
+      transparent 70%
+    );
+}
+
+.footer-copy::after {
+  content:
+    "";
+
+  position:
+    absolute;
+
+  width:
+    90px;
+
+  height:
+    90px;
+
+  left:
+    -35px;
+
+  top:
+    -35px;
+
+  border-radius:
+    50%;
+
+  background:
+    radial-gradient(
+      circle,
+      rgba(21,153,71,.1),
+      transparent 70%
+    );
+}
+
+.footer-copy strong {
+  position:
+    relative;
+
+  z-index:
+    2;
+
+  color:
+    #17281e;
+
+  font-size:
+    12px;
+
+  font-weight:
+    800;
+}
+
+
+/* ==========================================================
+   FOOTER SOCIAL BENTO GRID
+========================================================== */
+
+.footer-links {
+  display:
+    grid;
+
+  grid-template-columns:
+    repeat(4, minmax(100px, 1fr));
+
+  gap:
+    9px;
+}
+
+
+/* ==========================================================
+   FOOTER CONTACT CARDS
+========================================================== */
+
+.footer-links a {
+  position:
+    relative;
+
+  min-height:
+    105px;
+
+  overflow:
+    hidden;
+
+  display:
+    flex;
+
+  flex-direction:
+    column;
+
+  justify-content:
+    flex-end;
+
+  padding:
+    13px;
+
+  border:
+    1px solid var(--border);
+
+  border-radius:
+    var(--radius-md);
+
+  background:
+    #ffffff;
+
+  color:
+    var(--text-2);
+
+  font-size:
+    10px;
+
+  font-weight:
+    800;
+
+  box-shadow:
+    var(--shadow-xs);
+
+  transition:
+    transform .18s ease,
+    border-color .18s ease,
+    box-shadow .18s ease,
+    background .18s ease;
+}
+
+.footer-links a::before {
+  content:
+    "";
+
+  position:
+    absolute;
+
+  left:
+    13px;
+
+  top:
+    14px;
+
+  width:
+    23px;
+
+  height:
+    23px;
+
+  background-repeat:
+    no-repeat;
+
+  background-size:
+    contain;
+
+  background-position:
+    center;
+
+  opacity:
+    .9;
+}
+
+.footer-links a::after {
+  content:
+    "↗";
+
+  position:
+    absolute;
+
+  right:
+    11px;
+
+  top:
+    10px;
+
+  color:
+    var(--muted-2);
+
+  font-size:
+    12px;
+
+  transition:
+    transform .18s ease,
+    color .18s ease;
+}
+
+.footer-links a:hover {
+  transform:
+    translateY(-3px);
+
+  box-shadow:
+    var(--shadow-md);
+
+  background:
+    #fbfefd;
+}
+
+.footer-links a:hover::after {
+  transform:
+    translate(2px, -2px);
+
+  color:
+    var(--blue);
+}
+
+
+/* ==========================================================
+   FOOTER SVG ICONS
+========================================================== */
+
+.footer-links a:nth-child(1)::before {
+  background-image:
+    url("https://cdn.simpleicons.org/github/17201A");
+}
+
+.footer-links a:nth-child(2)::before {
+  background-image:
+    url("https://cdn.simpleicons.org/instagram/17201A");
+}
+
+.footer-links a:nth-child(3)::before {
+  background-image:
+    url("https://www.svgrepo.com/show/448217/codepen.svg");
+}
+
+.footer-links a:nth-child(4)::before {
+  background-image:
+    url("https://cdn.simpleicons.org/devdotto/17201A");
+}
+
+
+/* ==========================================================
+   FOOTER CARD COLOR ACCENTS
+========================================================== */
+
+.footer-links a:nth-child(1) {
+  border-top:
+    3px solid #17201a;
+}
+
+.footer-links a:nth-child(2) {
+  border-top:
+    3px solid #e1306c;
+}
+
+.footer-links a:nth-child(3) {
+  border-top:
+    3px solid var(--blue);
+}
+
+.footer-links a:nth-child(4) {
+  border-top:
+    3px solid var(--green);
+}
+
+
+/* ==========================================================
+   MOBILE / RESPONSIVE
+========================================================== */
+
+@media (max-width: 1100px) {
+
+  .toolbar {
+    grid-template-columns:
+      1fr;
+  }
+
+  .secondary-toolbar {
+    grid-template-columns:
+      1fr;
+  }
+
+  .secondary-toolbar > .toolbar-group {
+    justify-content:
+      flex-start;
+  }
+
+  .footer-inner {
+    grid-template-columns:
+      1fr;
+  }
+
+  .footer-links {
+    grid-template-columns:
+      repeat(2, 1fr);
+  }
+}
+
+
+@media (max-width: 900px) {
+
+  .layout {
+    grid-template-columns:
+      1fr;
+  }
+
+  .preview {
+    max-height:
+      540px;
+  }
+
+  .builder {
+    max-height:
+      620px;
+  }
+}
+
+
+@media (max-width: 640px) {
+
+  header {
+    top:
+      8px;
+
+    width:
+      92%;
+
+    height:
+      64px;
+
+    margin-top:
+      8px;
+  }
+
+  .header-inner {
+    padding:
+      6px;
+  }
+
+  .brand {
+    height:
+      48px;
+
+    padding:
+      0 10px;
+  }
+
+  .brand-logo {
+    width:
+      135px;
+  }
+
+  .brand-tag {
+    display:
+      none;
+  }
+
+  header .toolbar-group {
+    height:
+      48px;
+  }
+
+  header .toolbar-group .btn:nth-child(1),
+  header .toolbar-group .btn:nth-child(2) {
+    display:
+      none;
+  }
+
+  main {
+    width:
+      92%;
+
+    margin-top:
+      22px;
+  }
+
+  .hero {
+    padding:
+      22px;
+  }
+
+  .hero h1 {
+    font-size:
+      30px;
+  }
+
+  .toolbar-group {
+    width:
+      100%;
+  }
+
+  .filename {
+    width:
+      100%;
+  }
+
+  .filename input {
+    flex:
+      1;
+  }
+
+  .node-row,
+  .node-row.container-row {
+    grid-template-columns:
+      1fr;
+  }
+
+  .remove {
+    width:
+      100%;
+  }
+
+  .footer-inner {
+    width:
+      92%;
+  }
+
+  .footer-links {
+    grid-template-columns:
+      1fr 1fr;
+  }
+
+  .footer-links a {
+    min-height:
+      92px;
+  }
+}
+
+
+@media (max-width: 420px) {
+
+  .footer-links {
+    grid-template-columns:
+      1fr;
+  }
+
+  .stats {
+    width:
+      100%;
+  }
+}
+
+
+/* ==========================================================
+   REDUCED MOTION
+========================================================== */
+
+@media (prefers-reduced-motion: reduce) {
+
+  *,
+  *::before,
+  *::after {
+    scroll-behavior:
+      auto !important;
+
+    transition:
+      none !important;
+  }
+}
+
+
+/* ==========================================================
+   YOURR-IKYY BLUE BRANDING
+========================================================== */
+
+.brand-logo {
+  width: 165px;
+  height: auto;
+  display: block;
+
+  filter:
+    drop-shadow(
+      0 4px 10px
+      rgba(37, 99, 235, .14)
+    );
+
+  transition:
+    transform .2s ease,
+    filter .2s ease;
+}
+
+.brand:hover .brand-logo {
+  transform:
+    translateY(-1px);
+
+  filter:
+    drop-shadow(
+      0 6px 15px
+      rgba(37, 99, 235, .22)
+    );
+}
+
+
+/* ==========================================================
+   BENTO FOOTER
+========================================================== */
+
+.site-footer {
+  width: 100%;
+  padding:
+    12px 0
+    26px;
+}
+
+.footer-shell {
+  width:
+    min(1480px, 94%);
+
+  margin:
+    0 auto;
+
+  display:
+    grid;
+
+  grid-template-columns:
+    1.45fr
+    1fr
+    1fr
+    .85fr;
+
+  grid-template-areas:
+    "brand status project stack"
+    "shortcuts contact contact contact"
+    "bottom bottom bottom bottom";
+
+  gap:
+    12px;
+}
+
+
+/* ==========================================================
+   BASE CARD
+========================================================== */
+
+.footer-card {
+  position:
+    relative;
+
+  overflow:
+    hidden;
+
+  min-height:
+    160px;
+
+  padding:
+    18px;
+
+  background:
+    rgba(255,255,255,.92);
+
+  border:
+    1px solid #dce7e2;
+
+  border-radius:
+    20px;
+
+  box-shadow:
+    0 8px 28px
+    rgba(20, 45, 34, .055);
+
+  transition:
+    transform .18s ease,
+    border-color .18s ease,
+    box-shadow .18s ease;
+}
+
+.footer-card:hover {
+  transform:
+    translateY(-2px);
+
+  border-color:
+    #c8d9d2;
+
+  box-shadow:
+    0 15px 38px
+    rgba(20,45,34,.08);
+}
+
+
+/* ==========================================================
+   CARD LABEL
+========================================================== */
+
+.footer-card-label {
+  margin-bottom:
+    14px;
+
+  color:
+    #7e8d86;
+
+  font-size:
+    8px;
+
+  font-weight:
+    800;
+
+  letter-spacing:
+    1.2px;
+}
+
+
+/* ==========================================================
+   BRAND AREA
+========================================================== */
+
+.footer-brand-card {
+  grid-area:
+    brand;
+
+  background:
+    linear-gradient(
+      135deg,
+      #ffffff 0%,
+      #f5fbff 54%,
+      #eefaf3 100%
+    );
+}
+
+.footer-brand-card::before {
+  content:
+    "";
+
+  position:
+    absolute;
+
+  width:
+    170px;
+
+  height:
+    170px;
+
+  right:
+    -65px;
+
+  top:
+    -85px;
+
+  border-radius:
+    50%;
+
+  background:
+    radial-gradient(
+      circle,
+      rgba(37,99,235,.13),
+      transparent 68%
+    );
+}
+
+.footer-brand-logo {
+  position:
+    relative;
+
+  z-index:
+    2;
+
+  width:
+    145px;
+
+  margin-bottom:
+    5px;
+}
+
+.footer-brand-logo svg {
+  display:
+    block;
+
+  width:
+    100%;
+
+  height:
+    auto;
+}
+
+.footer-brand-card h3 {
+  position:
+    relative;
+
+  z-index:
+    2;
+
+  margin-top:
+    3px;
+
+  color:
+    #17251e;
+
+  font-size:
+    14px;
+
+  font-weight:
+    800;
+}
+
+.footer-brand-card p {
+  position:
+    relative;
+
+  z-index:
+    2;
+
+  max-width:
+    360px;
+
+  margin-top:
+    5px;
+
+  color:
+    #6c7c74;
+
+  font-size:
+    9px;
+
+  line-height:
+    1.65;
+}
+
+.footer-brand-meta {
+  position:
+    relative;
+
+  z-index:
+    2;
+
+  display:
+    flex;
+
+  flex-wrap:
+    wrap;
+
+  gap:
+    5px;
+
+  margin-top:
+    12px;
+}
+
+.footer-brand-meta span {
+  padding:
+    5px 7px;
+
+  border:
+    1px solid #cfe0ea;
+
+  border-radius:
+    999px;
+
+  background:
+    rgba(239,246,255,.7);
+
+  color:
+    #2563eb;
+
+  font-size:
+    7px;
+
+  font-weight:
+    800;
+
+  letter-spacing:
+    .5px;
+}
+
+
+/* ==========================================================
+   STATUS
+========================================================== */
+
+.footer-status-card {
+  grid-area:
+    status;
+
+  background:
+    linear-gradient(
+      145deg,
+      #ffffff,
+      #f4fbf6
+    );
+}
+
+.status-orb {
+  display:
+    inline-flex;
+
+  align-items:
+    center;
+
+  gap:
+    6px;
+
+  padding:
+    5px 8px;
+
+  border:
+    1px solid #bfe4ca;
+
+  border-radius:
+    999px;
+
+  background:
+    #effaf2;
+
+  color:
+    #168448;
+
+  font-size:
+    7px;
+
+  font-weight:
+    850;
+
+  letter-spacing:
+    .7px;
+}
+
+.status-orb span {
+  width:
+    6px;
+
+  height:
+    6px;
+
+  border-radius:
+    50%;
+
+  background:
+    #20a557;
+
+  box-shadow:
+    0 0 0 4px
+    rgba(32,165,87,.09);
+}
+
+.footer-status-card h3 {
+  margin-top:
+    14px;
+
+  color:
+    #18251e;
+
+  font-size:
+    13px;
+
+  font-weight:
+    800;
+}
+
+.footer-status-card p {
+  margin-top:
+    5px;
+
+  color:
+    #75827c;
+
+  font-size:
+    9px;
+
+  line-height:
+    1.65;
+}
+
+.footer-status-line {
+  display:
+    flex;
+
+  justify-content:
+    space-between;
+
+  gap:
+    10px;
+
+  margin-top:
+    11px;
+
+  padding-top:
+    8px;
+
+  border-top:
+    1px solid #e5eee9;
+
+  color:
+    #84918b;
+
+  font-size:
+    8px;
+}
+
+.footer-status-line strong {
+  color:
+    #24754b;
+
+  font-weight:
+    800;
+}
+
+
+/* ==========================================================
+   PROJECT
+========================================================== */
+
+.footer-project-card {
+  grid-area:
+    project;
+
+  background:
+    linear-gradient(
+      145deg,
+      #ffffff,
+      #f4f8ff
+    );
+}
+
+.project-number {
+  color:
+    #2563eb;
+
+  font-size:
+    31px;
+
+  line-height:
+    1;
+
+  font-weight:
+    850;
+
+  letter-spacing:
+    -1.5px;
+}
+
+.footer-project-card h3 {
+  margin-top:
+    10px;
+
+  color:
+    #172033;
+
+  font-size:
+    13px;
+
+  font-weight:
+    800;
+}
+
+.footer-project-card p {
+  margin-top:
+    4px;
+
+  color:
+    #748091;
+
+  font-size:
+    9px;
+
+  line-height:
+    1.6;
+}
+
+.project-tags {
+  display:
+    flex;
+
+  flex-wrap:
+    wrap;
+
+  gap:
+    5px;
+
+  margin-top:
+    12px;
+}
+
+.project-tags span {
+  padding:
+    4px 6px;
+
+  border:
+    1px solid #cfe0ff;
+
+  border-radius:
+    6px;
+
+  background:
+    #f2f7ff;
+
+  color:
+    #376bc7;
+
+  font-size:
+    6px;
+
+  font-weight:
+    800;
+
+  letter-spacing:
+    .4px;
+}
+
+
+/* ==========================================================
+   BUILT WITH
+========================================================== */
+
+.footer-stack-card {
+  grid-area:
+    stack;
+
+  background:
+    linear-gradient(
+      145deg,
+      #ffffff,
+      #f8fbfa
+    );
+}
+
+.stack-item {
+  display:
+    flex;
+
+  align-items:
+    center;
+
+  gap:
+    8px;
+
+  min-height:
+    28px;
+
+  margin-bottom:
+    3px;
+
+  color:
+    #3e4d46;
+
+  font-size:
+    9px;
+
+  font-weight:
+    750;
+}
+
+.stack-dot {
+  width:
+    8px;
+
+  height:
+    8px;
+
+  border-radius:
+    50%;
+}
+
+.stack-dot.blue {
+  background:
+    #2563eb;
+
+  box-shadow:
+    0 0 0 4px
+    rgba(37,99,235,.09);
+}
+
+.stack-dot.green {
+  background:
+    #159947;
+
+  box-shadow:
+    0 0 0 4px
+    rgba(21,153,71,.09);
+}
+
+.stack-dot.cyan {
+  background:
+    #0891b2;
+
+  box-shadow:
+    0 0 0 4px
+    rgba(8,145,178,.09);
+}
+
+.stack-note {
+  margin-top:
+    10px;
+
+  color:
+    #98a49e;
+
+  font-size:
+    7px;
+}
+
+
+/* ==========================================================
+   SHORTCUTS
+========================================================== */
+
+.footer-shortcuts-card {
+  grid-area:
+    shortcuts;
+
+  min-height:
+    148px;
+
+  background:
+    linear-gradient(
+      135deg,
+      #f8fbff,
+      #ffffff
+    );
+}
+
+.shortcut-row {
+  display:
+    flex;
+
+  align-items:
+    center;
+
+  flex-wrap:
+    wrap;
+
+  gap:
+    4px;
+
+  min-height:
+    27px;
+
+  color:
+    #7b8794;
+
+  font-size:
+    8px;
+}
+
+.shortcut-row kbd {
+  min-width:
+    20px;
+
+  height:
+    20px;
+
+  display:
+    inline-flex;
+
+  align-items:
+    center;
+
+  justify-content:
+    center;
+
+  padding:
+    0 5px;
+
+  border:
+    1px solid #d5dee8;
+
+  border-bottom-width:
+    2px;
+
+  border-radius:
+    5px;
+
+  background:
+    #ffffff;
+
+  color:
+    #41505f;
+
+  font-family:
+    inherit;
+
+  font-size:
+    7px;
+
+  font-weight:
+    800;
+}
+
+.shortcut-row strong {
+  margin-left:
+    5px;
+
+  color:
+    #4a5967;
+
+  font-size:
+    8px;
+}
+
+
+/* ==========================================================
+   CONTACT
+========================================================== */
+
+.footer-contact-card {
+  grid-area:
+    contact;
+
+  min-height:
+    148px;
+
+  background:
+    linear-gradient(
+      145deg,
+      #ffffff,
+      #f7fcfa
+    );
+}
+
+.contact-grid {
+  display:
+    grid;
+
+  grid-template-columns:
+    repeat(4, minmax(0, 1fr));
+
+  gap:
+    8px;
+}
+
+.contact-item {
+  position:
+    relative;
+
+  min-height:
+    90px;
+
+  padding:
+    13px;
+
+  display:
+    flex;
+
+  flex-direction:
+    column;
+
+  justify-content:
+    flex-end;
+
+  border:
+    1px solid #dde7e2;
+
+  border-radius:
+    13px;
+
+  background:
+    #ffffff;
+
+  transition:
+    transform .18s ease,
+    border-color .18s ease,
+    box-shadow .18s ease;
+}
+
+.contact-item:hover {
+  transform:
+    translateY(-3px);
+
+  border-color:
+    #cbd8d2;
+
+  box-shadow:
+    0 8px 20px
+    rgba(25,50,39,.06);
+}
+
+.contact-item img {
+  position:
+    absolute;
+
+  left:
+    13px;
+
+  top:
+    13px;
+
+  width:
+    20px;
+
+  height:
+    20px;
+
+  object-fit:
+    contain;
+}
+
+.contact-item div {
+  display:
+    flex;
+
+  flex-direction:
+    column;
+
+  gap:
+    2px;
+}
+
+.contact-item strong {
+  color:
+    #202b25;
+
+  font-size:
+    9px;
+
+  font-weight:
+    800;
+}
+
+.contact-item span {
+  color:
+    #89948e;
+
+  font-size:
+    7px;
+}
+
+.contact-arrow {
+  position:
+    absolute;
+
+  right:
+    10px;
+
+  top:
+    9px;
+
+  color:
+    #99a7a0 !important;
+
+  font-size:
+    11px !important;
+
+  transition:
+    color .18s ease,
+    transform .18s ease;
+}
+
+.contact-item:hover .contact-arrow {
+  color:
+    #2563eb !important;
+
+  transform:
+    translate(
+      2px,
+      -2px
+    );
+}
+
+
+/* TOP ACCENTS */
+
+.contact-item.github {
+  border-top:
+    3px solid #17201a;
+}
+
+.contact-item.instagram {
+  border-top:
+    3px solid #e1306c;
+}
+
+.contact-item.codepen {
+  border-top:
+    3px solid #2563eb;
+}
+
+.contact-item.devto {
+  border-top:
+    3px solid #159947;
+}
+
+
+/* ==========================================================
+   BOTTOM BAR
+========================================================== */
+
+.footer-bottom {
+  grid-area:
+    bottom;
+
+  min-height:
+    38px;
+
+  padding:
+    0 12px;
+
+  display:
+    flex;
+
+  align-items:
+    center;
+
+  flex-wrap:
+    wrap;
+
+  gap:
+    7px;
+
+  color:
+    #89968f;
+
+  font-size:
+    7px;
+
+  font-weight:
+    650;
+}
+
+.footer-bottom-dot {
+  color:
+    #bfd0c8;
+}
+
+.footer-bottom-spacer {
+  flex:
+    1;
+}
+
+
+/* ==========================================================
+   TABLET
+========================================================== */
+
+@media (max-width: 1050px) {
+
+  .footer-shell {
+    grid-template-columns:
+      1fr 1fr;
+
+    grid-template-areas:
+      "brand brand"
+      "status project"
+      "stack shortcuts"
+      "contact contact"
+      "bottom bottom";
+  }
+
+  .contact-grid {
+    grid-template-columns:
+      repeat(4, 1fr);
+  }
+}
+
+
+/* ==========================================================
+   MOBILE
+========================================================== */
+
+@media (max-width: 650px) {
+
+  .site-footer {
+    padding:
+      8px 0 16px;
+  }
+
+  .footer-shell {
+    width:
+      92%;
+
+    grid-template-columns:
+      1fr;
+
+    grid-template-areas:
+      "brand"
+      "status"
+      "project"
+      "stack"
+      "shortcuts"
+      "contact"
+      "bottom";
+  }
+
+  .footer-card {
+    min-height:
+      auto;
+  }
+
+  .footer-contact-card,
+  .footer-shortcuts-card {
+    min-height:
+      auto;
+  }
+
+  .contact-grid {
+    grid-template-columns:
+      1fr 1fr;
+  }
+
+  .footer-bottom {
+    padding:
+      3px 4px;
+  }
+
+  .footer-bottom-spacer {
+    display:
+      none;
+  }
+}
+
+
+/* ==========================================================
+   SMALL MOBILE
+========================================================== */
+
+@media (max-width: 420px) {
+
+  .contact-grid {
+    grid-template-columns:
+      1fr;
+  }
+
+  .footer-brand-logo {
+    width:
+      130px;
+  }
+
+}
+
+
+
+/* ==================================================
+   CLEAR CONFIRMATION
+================================================== */
+
+.clear-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 20px;
+
+  background: rgba(15, 23, 42, .28);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+
+  opacity: 0;
+  visibility: hidden;
+
+  transition:
+    opacity .2s ease,
+    visibility .2s ease;
+}
+
+.clear-overlay.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+
+/* MODAL */
+
+.clear-modal {
+  width: min(420px, 100%);
+
+  padding: 25px;
+
+  background: rgba(255, 255, 255, .96);
+
+  border: 1px solid rgba(148, 163, 184, .25);
+  border-radius: 24px;
+
+  box-shadow:
+    0 25px 70px rgba(15, 23, 42, .18),
+    0 5px 20px rgba(37, 99, 235, .08);
+
+  transform:
+    translateY(12px)
+    scale(.97);
+
+  transition:
+    transform .25s cubic-bezier(.2,.8,.2,1);
+}
+
+.clear-overlay.active .clear-modal {
+  transform:
+    translateY(0)
+    scale(1);
+}
+
+
+/* ICON */
+
+.clear-icon {
+  width: 48px;
+  height: 48px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  margin-bottom: 18px;
+
+  color: #2563eb;
+
+  background:
+    linear-gradient(
+      135deg,
+      rgba(37, 99, 235, .10),
+      rgba(56, 189, 248, .16)
+    );
+
+  border: 1px solid rgba(37, 99, 235, .12);
+  border-radius: 15px;
+}
+
+.clear-icon svg {
+  width: 23px;
+  height: 23px;
+}
+
+
+/* TEXT */
+
+.clear-label {
+  display: block;
+
+  margin-bottom: 6px;
+
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 1.4px;
+
+  color: #2563eb;
+}
+
+.clear-content h3 {
+  margin: 0 0 8px;
+
+  font-size: 23px;
+  line-height: 1.15;
+  letter-spacing: -.7px;
+
+  color: #172033;
+}
+
+.clear-content p {
+  margin: 0;
+
+  max-width: 350px;
+
+  font-size: 13px;
+  line-height: 1.6;
+
+  color: #64748b;
+}
+
+
+/* BUTTONS */
+
+.clear-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 9px;
+
+  margin-top: 25px;
+}
+
+.clear-actions button {
+  height: 40px;
+
+  padding: 0 17px;
+
+  border: none;
+  border-radius: 11px;
+
+  font-family: inherit;
+  font-size: 12px;
+  font-weight: 700;
+
+  cursor: pointer;
+
+  transition:
+    transform .15s ease,
+    box-shadow .15s ease,
+    background .15s ease;
+}
+
+.clear-actions button:hover {
+  transform: translateY(-1px);
+}
+
+.clear-actions button:active {
+  transform: translateY(0);
+}
+
+
+/* CANCEL */
+
+.clear-cancel {
+  color: #475569;
+  background: #f1f5f9;
+}
+
+.clear-cancel:hover {
+  background: #e2e8f0;
+}
+
+
+/* CLEAR */
+
+.clear-confirm {
+  color: white;
+
+  background:
+    linear-gradient(
+      135deg,
+      #1d4ed8,
+      #38bdf8
+    );
+
+  box-shadow:
+    0 5px 15px rgba(37, 99, 235, .20);
+}
+
+.clear-confirm:hover {
+  box-shadow:
+    0 8px 20px rgba(37, 99, 235, .28);
+}
+
+
+/* MOBILE */
+
+@media (max-width: 480px) {
+  .clear-modal {
+    padding: 21px;
+    border-radius: 21px;
+  }
+
+  .clear-actions {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .clear-actions button {
+    width: 100%;
+  }
+}
+
+  </style>
+</head>
+
+<body>
+
+<div class="page">
+
+  <!-- ==================================================
+       HEADER
+  ================================================== -->
+
+  <header>
+    <div class="header-inner">
+
+      <a
+        class="brand"
+        href="https://github.com/yourr-ikyygithub"
+        target="_blank"
+        rel="noopener"
+      >
+
+
+<svg
+  class="brand-logo"
+  viewBox="0 0 520 90"
+  xmlns="http://www.w3.org/2000/svg"
+  role="img"
+  aria-label="yourr-ikyy"
+>
+  <defs>
+    <linearGradient
+      id="yourrBlue"
+      x1="0%"
+      y1="0%"
+      x2="100%"
+      y2="100%"
+    >
+      <stop offset="0%" stop-color="#1d4ed8"/>
+      <stop offset="45%" stop-color="#2563eb"/>
+      <stop offset="75%" stop-color="#0ea5e9"/>
+      <stop offset="100%" stop-color="#38bdf8"/>
+    </linearGradient>
+
+    <filter
+      id="blueGlow"
+      x="-20%"
+      y="-40%"
+      width="140%"
+      height="180%"
+    >
+      <feGaussianBlur
+        stdDeviation="3"
+        result="blur"
+      />
+
+      <feMerge>
+        <feMergeNode
+          in="blur"
+        />
+
+        <feMergeNode
+          in="SourceGraphic"
+        />
+      </feMerge>
+    </filter>
+  </defs>
+
+  <!-- Main Logo -->
+  <text
+    x="0"
+    y="65"
+    fill="url(#yourrBlue)"
+    font-family="Inter, Arial, sans-serif"
+    font-size="64"
+    font-weight="800"
+    font-style="italic"
+    letter-spacing="-3"
+    filter="url(#blueGlow)"
+  >
+    yourr-ikyy
+  </text>
+
+  <!-- Subtle blue underline -->
+  <path
+    d="M7 78
+       C120 86,
+       260 85,
+       410 78"
+    fill="none"
+    stroke="#2563eb"
+    stroke-width="3"
+    stroke-linecap="round"
+    opacity=".7"
+  />
+</svg>
+
+
+
+        <span class="brand-tag">
+          Jify
+        </span>
+
+      </a>
+
+      <div class="toolbar-group">
+
+        <button
+          class="btn"
+          id="undoBtn"
+        >
+          ↶ Undo
+        </button>
+
+        <button
+          class="btn"
+          id="redoBtn"
+        >
+          ↷ Redo
+        </button>
+
+        <button
+          class="btn"
+          id="importBtn"
+        >
+          Import
+        </button>
+
+        <button
+          class="btn success"
+          id="saveBtn"
+        >
+          Save
+        </button>
+
+        <button
+          class="btn"
+          id="loadBtn"
+        >
+          Load
+        </button>
+
+      </div>
+
+    </div>
+  </header>
+
+
+  <!-- ==================================================
+       MAIN
+  ================================================== -->
+
+  <main>
+
+    <section class="hero">
+
+      <h1>
+        Jify
+      </h1>
+
+      <p>
+        Build fully customizable JSON structures visually.
+        Create fields, objects and arrays, then export the result instantly.
+      </p>
+
+    </section>
+
+
+    <!-- ==================================================
+         PRIMARY TOOLBAR
+    ================================================== -->
+
+    <div class="toolbar">
+
+      <div class="toolbar-group">
+
+        <button
+          class="btn"
+          id="copyBtn"
+        >
+          Copy
+        </button>
+
+        <button
+          class="btn"
+          id="formatBtn"
+        >
+          Format
+        </button>
+
+        <button
+          class="btn"
+          id="minifyBtn"
+        >
+          Minify
+        </button>
+
+        <button
+          class="btn danger"
+          id="clearBtn"
+        >
+          Clear
+        </button>
+
+      </div>
+
+
+      <div class="toolbar-group">
+
+        <label class="filename">
+          File
+
+          <input
+            id="filename"
+            type="text"
+            value="data"
+            autocomplete="off"
+          >
+
+          <span>.json</span>
+        </label>
+
+        <button
+          class="btn primary"
+          id="downloadBtn"
+        >
+          Download JSON
+        </button>
+
+      </div>
+
+    </div>
+
+
+    <!-- ==================================================
+         TERTIARY TOOLS
+    ================================================== -->
+
+    <div class="secondary-toolbar">
+
+      <!-- TERTIARY #2 : SEARCH -->
+
+      <div class="search-box">
+
+        <span class="search-icon">
+          ⌕
+        </span>
+
+        <input
+          id="searchInput"
+          type="text"
+          placeholder="Search keys..."
+          autocomplete="off"
+        >
+
+      </div>
+
+
+      <!-- TERTIARY #3 + #4 -->
+
+      <div class="toolbar-group">
+
+        <button
+          class="btn"
+          id="sortBtn"
+        >
+          Sort Keys
+        </button>
+
+        <button
+          class="btn"
+          id="expandBtn"
+        >
+          Expand All
+        </button>
+
+        <button
+          class="btn"
+          id="collapseBtn"
+        >
+          Collapse All
+        </button>
+
+      </div>
+
+    </div>
+
+
+    <!-- ==================================================
+         BUILDER + PREVIEW
+    ================================================== -->
+
+    <div class="layout">
+
+      <!-- ==================================================
+           BUILDER
+      ================================================== -->
+
+      <section class="panel">
+
+        <div class="panel-head">
+
+          <h2>
+            Builder
+          </h2>
+
+          <span id="fieldCount">
+            0 fields
+          </span>
+
+        </div>
+
+
+        <div
+          class="builder"
+          id="rootContainer"
+        ></div>
+
+
+        <div
+          class="root-actions"
+          style="padding:0 15px 15px;"
+        >
+
+          <!-- MAIN #1 -->
+
+          <button
+            class="btn"
+            id="addFieldBtn"
+          >
+            + Field
+          </button>
+
+          <!-- MAIN #2 -->
+
+          <button
+            class="btn"
+            id="addObjectBtn"
+          >
+            + Object
+          </button>
+
+          <button
+            class="btn"
+            id="addArrayBtn"
+          >
+            + Array
+          </button>
+
+        </div>
+
+      </section>
+
+
+      <!-- ==================================================
+           PREVIEW
+      ================================================== -->
+
+      <section class="panel preview-panel">
+
+        <div class="panel-head">
+
+          <h2>
+            JSON Preview
+          </h2>
+
+          <span id="jsonSize">
+            0 bytes
+          </span>
+
+        </div>
+
+
+        <div class="preview">
+
+          <pre id="preview">{}</pre>
+
+        </div>
+
+
+        <div class="preview-bottom">
+
+          <div
+            class="status"
+            id="status"
+          >
+            Ready.
+          </div>
+
+
+          <!-- TERTIARY #1 : LIVE STATS -->
+
+          <div class="stats">
+
+            <span class="stat">
+              Keys:
+              <strong id="statKeys">0</strong>
+            </span>
+
+            <span class="stat">
+              Objects:
+              <strong id="statObjects">0</strong>
+            </span>
+
+            <span class="stat">
+              Arrays:
+              <strong id="statArrays">0</strong>
+            </span>
+
+            <span class="stat">
+              Depth:
+              <strong id="statDepth">0</strong>
+            </span>
+
+          </div>
+
+        </div>
+
+      </section>
+
+    </div>
+
+  </main>
+
+
+  <!-- ==================================================
+       FOOTER
+  ================================================== -->
+
+  <!-- ==================================================
+     BENTO FOOTER
+================================================== -->
+
+<footer class="site-footer">
+
+  <div class="footer-shell">
+
+    <!-- BRAND -->
+    <section class="footer-card footer-brand-card">
+
+      <div class="footer-card-label">
+        PRODUCT
+      </div>
+
+      <div class="footer-brand-logo">
+        <svg
+          viewBox="0 0 520 90"
+          xmlns="http://www.w3.org/2000/svg"
+          aria-label="yourr-ikyy"
+        >
+          <defs>
+            <linearGradient
+              id="footerBrandBlue"
+              x1="0%"
+              y1="0%"
+              x2="100%"
+              y2="100%"
+            >
+              <stop
+                offset="0%"
+                stop-color="#1d4ed8"
+              />
+              <stop
+                offset="50%"
+                stop-color="#2563eb"
+              />
+              <stop
+                offset="100%"
+                stop-color="#0ea5e9"
+              />
+            </linearGradient>
+          </defs>
+
+          <text
+            x="0"
+            y="65"
+            fill="url(#footerBrandBlue)"
+            font-family="Inter, Arial, sans-serif"
+            font-size="64"
+            font-weight="800"
+            font-style="italic"
+            letter-spacing="-3"
+          >
+            yourr-ikyy
+          </text>
+        </svg>
+      </div>
+
+      <h3>
+        JSON Builder
+      </h3>
+
+      <p>
+        A visual JSON construction tool for building,
+        editing, importing and exporting structured data.
+      </p>
+
+      <div class="footer-brand-meta">
+        <span>CLIENT-SIDE</span>
+        <span>JSON</span>
+        <span>WEB TOOL</span>
+      </div>
+
+    </section>
+
+
+    <!-- SYSTEM STATUS -->
+    <section class="footer-card footer-status-card">
+
+      <div class="footer-card-label">
+        SYSTEM STATUS
+      </div>
+
+      <div class="status-orb">
+        <span></span>
+        ONLINE
+      </div>
+
+      <h3>
+        Everything is running
+      </h3>
+
+      <p>
+        Your workspace is processed directly
+        in the browser.
+      </p>
+
+      <div class="footer-status-line">
+        <span>Storage</span>
+        <strong>Local</strong>
+      </div>
+
+      <div class="footer-status-line">
+        <span>Processing</span>
+        <strong>Client-side</strong>
+      </div>
+
+    </section>
+
+
+    <!-- PROJECT -->
+    <section class="footer-card footer-project-card">
+
+      <div class="footer-card-label">
+        PROJECT
+      </div>
+
+      <div class="project-number">
+        03
+      </div>
+
+      <h3>
+        JSON Builder
+      </h3>
+
+      <p>
+        Visual data editor with nested
+        object and array support.
+      </p>
+
+      <div class="project-tags">
+        <span>IMPORT</span>
+        <span>EXPORT</span>
+        <span>UNDO</span>
+        <span>LOCAL SAVE</span>
+      </div>
+
+    </section>
+
+
+    <!-- BUILT WITH -->
+    <section class="footer-card footer-stack-card">
+
+      <div class="footer-card-label">
+        BUILT WITH
+      </div>
+
+      <div class="stack-item">
+        <span class="stack-dot blue"></span>
+        HTML
+      </div>
+
+      <div class="stack-item">
+        <span class="stack-dot green"></span>
+        CSS
+      </div>
+
+      <div class="stack-item">
+        <span class="stack-dot cyan"></span>
+        JavaScript
+      </div>
+
+      <div class="stack-note">
+        Pure browser technology
+      </div>
+
+    </section>
+
+
+    <!-- QUICK ACTIONS -->
+    <section class="footer-card footer-shortcuts-card">
+
+      <div class="footer-card-label">
+        QUICK ACTIONS
+      </div>
+
+      <div class="shortcut-row">
+        <kbd>CTRL</kbd>
+        <span>+</span>
+        <kbd>S</kbd>
+        <strong>Save</strong>
+      </div>
+
+      <div class="shortcut-row">
+        <kbd>CTRL</kbd>
+        <span>+</span>
+        <kbd>Z</kbd>
+        <strong>Undo</strong>
+      </div>
+
+      <div class="shortcut-row">
+        <kbd>CTRL</kbd>
+        <span>+</span>
+        <kbd>SHIFT</kbd>
+        <span>+</span>
+        <kbd>Z</kbd>
+        <strong>Redo</strong>
+      </div>
+
+      <div class="shortcut-row">
+        <kbd>CTRL</kbd>
+        <span>+</span>
+        <kbd>O</kbd>
+        <strong>Import</strong>
+      </div>
+
+    </section>
+
+
+    <!-- CONTACT -->
+    <section class="footer-card footer-contact-card">
+
+      <div class="footer-card-label">
+        CONTACT & SOCIAL
+      </div>
+
+      <div class="contact-grid">
+
+        <a
+          href="https://github.com/yourr-ikyygithub"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="contact-item github"
+        >
+
+          <img
+            src="https://cdn.simpleicons.org/github/17201A"
+            alt=""
+          >
+
+          <div>
+            <strong>GitHub</strong>
+            <span>yourr-ikyygithub</span>
+          </div>
+
+          <span class="contact-arrow">↗</span>
+
+        </a>
+
+
+        <a
+          href="https://www.instagram.com/your_ikyz/"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="contact-item instagram"
+        >
+
+          <img
+            src="https://cdn.simpleicons.org/instagram/17201A"
+            alt=""
+          >
+
+          <div>
+            <strong>Instagram</strong>
+            <span>your_ikyz</span>
+          </div>
+
+          <span class="contact-arrow">↗</span>
+
+        </a>
+
+
+        <a
+          href="https://codepen.io/eL-Fikyzz"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="contact-item codepen"
+        >
+
+          <img
+            src="https://www.svgrepo.com/show/448217/codepen.svg"
+            alt=""
+          >
+
+          <div>
+            <strong>CodePen</strong>
+            <span>eL-Fikyzz</span>
+          </div>
+
+          <span class="contact-arrow">↗</span>
+
+        </a>
+
+
+        <a
+          href="https://dev.to/yourrikyy"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="contact-item devto"
+        >
+
+          <img
+            src="https://cdn.simpleicons.org/devdotto/17201A"
+            alt=""
+          >
+
+          <div>
+            <strong>dev.to</strong>
+            <span>yourrikyy</span>
+          </div>
+
+          <span class="contact-arrow">↗</span>
+
+        </a>
+
+      </div>
+
+    </section>
+
+
+    <!-- FOOTER BAR -->
+    <div class="footer-bottom">
+
+      <span>
+        JSON Builder
+      </span>
+
+      <span class="footer-bottom-dot">
+        •
+      </span>
+
+      <span>
+        Built for the web
+      </span>
+
+      <span class="footer-bottom-spacer"></span>
+
+      <span>
+        Client-side processing
+      </span>
+
+    </div>
+
+  </div>
+
+</footer>
+
+</div>
+
+
+<!-- ==================================================
+     IMPORT MODAL
+================================================== -->
+
+<div
+  class="modal"
+  id="importModal"
+>
+
+  <div class="modal-box">
+
+    <div class="modal-head">
+
+      <h3>
+        Import JSON
+      </h3>
+
+      <button
+        class="modal-close"
+        id="closeModal"
+      >
+        ×
+      </button>
+
+    </div>
+
+
+    <div class="modal-content">
+
+      <textarea
+        id="importInput"
+        spellcheck="false"
+        placeholder='Paste JSON here...
+
+Example:
+{
+  "project": "Example App",
+  "version": 1,
+  "features": [
+    "search",
+    "export",
+    "storage"
+  ]
+}'
+      ></textarea>
+
+    </div>
+
+
+    <div class="modal-actions">
+
+      <button
+        class="btn"
+        id="cancelImport"
+      >
+        Cancel
+      </button>
+
+      <button
+        class="btn primary"
+        id="confirmImport"
+      >
+        Import JSON
+      </button>
+
+    </div>
+
+  </div>
+
+</div>
+
+<!-- CLEAR CONFIRMATION MODAL -->
+<div class="clear-overlay" id="clearOverlay">
+  <div class="clear-modal">
+
+    <div class="clear-icon">
+      <svg viewBox="0 0 24 24" fill="none">
+        <path
+          d="M6 7h12M9 7V5h6v2M8 7l1 12h6l1-12M10 11v5M14 11v5"
+          stroke="currentColor"
+          stroke-width="1.8"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        />
+      </svg>
+    </div>
+
+    <div class="clear-content">
+      <span class="clear-label">CLEAR WORKSPACE</span>
+
+      <h3>Clear all data?</h3>
+
+      <p>
+        This will remove all data from your current
+        JSON workspace. This action cannot be undone.
+      </p>
+    </div>
+    
+    <div class="clear-actions">
+      <button class="clear-cancel" id="clearCancel">
+        Cancel
+      </button>
+
+      <button class="clear-confirm" id="clearConfirm">
+        Clear
+      </button>
+    </div>
+
+  </div>
+</div>
+
+
+<script>
+
+  /* ==================================================
+     CORE STATE
+  ================================================== */
+
+  const rootContainer =
+    document.getElementById("rootContainer");
+
+  const preview =
+    document.getElementById("preview");
+
+  const status =
+    document.getElementById("status");
+
+  const fieldCount =
+    document.getElementById("fieldCount");
+
+  const jsonSize =
+    document.getElementById("jsonSize");
+
+  const statKeys =
+    document.getElementById("statKeys");
+
+  const statObjects =
+    document.getElementById("statObjects");
+
+  const statArrays =
+    document.getElementById("statArrays");
+
+  const statDepth =
+    document.getElementById("statDepth");
+
+  const filename =
+    document.getElementById("filename");
+
+  const searchInput =
+    document.getElementById("searchInput");
+
+  const importModal =
+    document.getElementById("importModal");
+
+  const importInput =
+    document.getElementById("importInput");
+
+
+  let nextId = 1;
+
+  let formatMode = "pretty";
+
+  let searchTerm = "";
+
+
+  /* ==================================================
+     HISTORY
+  ================================================== */
+
+  const history = [];
+
+  let historyIndex = -1;
+
+  let historyLock = false;
+
+  let historyTimer = null;
+
+
+  function currentDataSnapshot() {
+    return JSON.stringify(getJSON());
+  }
+
+
+  function pushHistory() {
+
+    if (historyLock) return;
+
+    const snapshot =
+      currentDataSnapshot();
+
+
+    if (
+      history[historyIndex] === snapshot
+    ) {
+      updateHistoryButtons();
+      return;
+    }
+
+
+    history.splice(
+      historyIndex + 1
+    );
+
+
+    history.push(snapshot);
+
+    historyIndex =
+      history.length - 1;
+
+
+    if (history.length > 60) {
+      history.shift();
+      historyIndex--;
+    }
+
+
+    updateHistoryButtons();
+  }
+
+
+  function scheduleHistory() {
+
+    clearTimeout(historyTimer);
+
+    historyTimer =
+      setTimeout(
+        pushHistory,
+        280
+      );
+  }
+
+
+  function updateHistoryButtons() {
+
+    document.getElementById("undoBtn")
+      .disabled =
+      historyIndex <= 0;
+
+
+    document.getElementById("redoBtn")
+      .disabled =
+      historyIndex >= history.length - 1;
+
+  }
+
+
+  function restoreHistory(index) {
+
+    if (
+      index < 0 ||
+      index >= history.length
+    ) {
+      return;
+    }
+
+
+    historyLock = true;
+
+
+    try {
+
+      const parsed =
+        JSON.parse(
+          history[index]
+        );
+
+
+      buildFromObject(
+        parsed,
+        rootContainer
+      );
+
+
+      historyIndex = index;
+
+      updatePreview();
+
+      updateHistoryButtons();
+
+      status.textContent =
+        index < historyIndex
+          ? "History restored."
+          : "History restored.";
+
+    } finally {
+
+      historyLock = false;
+
+    }
+
+  }
+
+
+  /* ==================================================
+     NODE CREATION
+  ================================================== */
+
+  function createNode(
+    type = "string",
+    key = ""
+  ) {
+
+    const node =
+      document.createElement("div");
+
+    node.className = "node";
+
+    node.dataset.id =
+      nextId++;
+
+    node.dataset.type =
+      type;
+
+
+    if (
+      type === "object" ||
+      type === "array"
+    ) {
+
+      node.innerHTML = `
+
+        <div class="node-inner">
+
+          <div class="node-row container-row">
+
+            <input
+              class="key-input"
+              placeholder="Key"
+              value="${escapeAttribute(key)}"
+            >
+
+            <select class="type-select">
+
+              <option value="string">
+                String
+              </option>
+
+              <option value="number">
+                Number
+              </option>
+
+              <option value="boolean">
+                Boolean
+              </option>
+
+              <option value="null">
+                Null
+              </option>
+
+              <option
+                value="object"
+                ${type === "object" ? "selected" : ""}
+              >
+                Object
+              </option>
+
+              <option
+                value="array"
+                ${type === "array" ? "selected" : ""}
+              >
+                Array
+              </option>
+
+            </select>
+
+            <button
+              class="remove"
+              title="Delete"
+            >
+              ×
+            </button>
+
+          </div>
+
+
+          <div class="children"></div>
+
+
+          <div class="node-tools">
+
+            <button
+              class="collapse-toggle"
+              title="Collapse / Expand"
+            >
+              ▾
+            </button>
+
+            <button
+              class="mini-btn add-field"
+            >
+              + Field
+            </button>
+
+            <button
+              class="mini-btn add-object"
+            >
+              + Object
+            </button>
+
+            <button
+              class="mini-btn add-array"
+            >
+              + Array
+            </button>
+
+            <button
+              class="mini-btn duplicate"
+            >
+              Duplicate
+            </button>
+
+          </div>
+
+        </div>
+
+      `;
+
+    } else {
+
+      node.innerHTML = `
+
+        <div class="node-inner">
+
+          <div class="node-row">
+
+            <input
+              class="key-input"
+              placeholder="Key"
+              value="${escapeAttribute(key)}"
+            >
+
+            <select class="type-select">
+
+              <option
+                value="string"
+                ${type === "string" ? "selected" : ""}
+              >
+                String
+              </option>
+
+              <option
+                value="number"
+                ${type === "number" ? "selected" : ""}
+              >
+                Number
+              </option>
+
+              <option
+                value="boolean"
+                ${type === "boolean" ? "selected" : ""}
+              >
+                Boolean
+              </option>
+
+              <option
+                value="null"
+                ${type === "null" ? "selected" : ""}
+              >
+                Null
+              </option>
+
+              <option value="object">
+                Object
+              </option>
+
+              <option value="array">
+                Array
+              </option>
+
+            </select>
+
+            <input
+              class="value-input"
+              placeholder="Value"
+            >
+
+            <button
+              class="remove"
+              title="Delete"
+            >
+              ×
+            </button>
+
+          </div>
+
+          <div class="node-tools">
+
+            <button
+              class="mini-btn duplicate"
+            >
+              Duplicate
+            </button>
+
+          </div>
+
+        </div>
+
+      `;
+
+    }
+
+
+    setupNode(node);
+
+    return node;
+  }
+
+
+  /* ==================================================
+     NODE EVENTS
+  ================================================== */
+
+  function setupNode(node) {
+
+    const typeSelect =
+      node.querySelector(".type-select");
+
+    const keyInput =
+      node.querySelector(".key-input");
+
+    const removeButton =
+      node.querySelector(".remove");
+
+    const duplicateButton =
+      node.querySelector(".duplicate");
+
+    const collapseButton =
+      node.querySelector(".collapse-toggle");
+
+
+    keyInput.addEventListener(
+      "input",
+      () => {
+
+        updatePreview();
+
+        scheduleHistory();
+
+      }
+    );
+
+
+    const valueInput =
+      node.querySelector(".value-input");
+
+
+    if (valueInput) {
+
+      valueInput.addEventListener(
+        "input",
+        () => {
+
+          updatePreview();
+
+          scheduleHistory();
+
+        }
+      );
+
+    }
+
+
+    typeSelect.addEventListener(
+      "change",
+      () => {
+
+        const newType =
+          typeSelect.value;
+
+        const currentKey =
+          keyInput.value;
+
+
+        const replacement =
+          createNode(
+            newType,
+            currentKey
+          );
+
+
+        const oldValue =
+          node.querySelector(
+            ".value-input"
+          );
+
+
+        const newValue =
+          replacement.querySelector(
+            ".value-input"
+          );
+
+
+        if (
+          oldValue &&
+          newValue
+        ) {
+
+          newValue.value =
+            oldValue.value;
+
+        }
+
+
+        node.replaceWith(
+          replacement
+        );
+
+
+        updatePreview();
+        pushHistory();
+
+      }
+    );
+
+
+    removeButton.addEventListener(
+      "click",
+      () => {
+
+        node.remove();
+
+        updatePreview();
+        pushHistory();
+
+      }
+    );
+
+
+    if (duplicateButton) {
+
+      duplicateButton.addEventListener(
+        "click",
+        () => {
+
+          const clone =
+            cloneNodeTree(node);
+
+          node.after(clone);
+
+          updatePreview();
+          pushHistory();
+
+        }
+      );
+
+    }
+
+
+    if (collapseButton) {
+
+      collapseButton.addEventListener(
+        "click",
+        () => {
+
+          node.classList.toggle(
+            "collapsed"
+          );
+
+        }
+      );
+
+    }
+
+
+    const addField =
+      node.querySelector(".add-field");
+
+    const addObject =
+      node.querySelector(".add-object");
+
+    const addArray =
+      node.querySelector(".add-array");
+
+
+    if (addField) {
+
+      addField.addEventListener(
+        "click",
+        () => {
+
+          node
+            .querySelector(".children")
+            .appendChild(
+              createNode("string")
+            );
+
+          updatePreview();
+          pushHistory();
+
+        }
+      );
+
+    }
+
+
+    if (addObject) {
+
+      addObject.addEventListener(
+        "click",
+        () => {
+
+          node
+            .querySelector(".children")
+            .appendChild(
+              createNode("object")
+            );
+
+          updatePreview();
+          pushHistory();
+
+        }
+      );
+
+    }
+
+
+    if (addArray) {
+
+      addArray.addEventListener(
+        "click",
+        () => {
+
+          node
+            .querySelector(".children")
+            .appendChild(
+              createNode("array")
+            );
+
+          updatePreview();
+          pushHistory();
+
+        }
+      );
+
+    }
+
+  }
+
+
+  /* ==================================================
+     CLONE NODE
+  ================================================== */
+
+  function cloneNodeTree(node) {
+
+    const type =
+      node.dataset.type;
+
+    const key =
+      node.querySelector(
+        ".key-input"
+      )?.value || "";
+
+
+    const clone =
+      createNode(type, key);
+
+
+    if (
+      type === "object" ||
+      type === "array"
+    ) {
+
+      const sourceChildren =
+        node.querySelector(
+          ":scope > .node-inner > .children"
+        );
+
+
+      const targetChildren =
+        clone.querySelector(
+          ":scope > .node-inner > .children"
+        );
+
+
+      sourceChildren
+        .querySelectorAll(
+          ":scope > .node"
+        )
+        .forEach(child => {
+
+          targetChildren.appendChild(
+            cloneNodeTree(child)
+          );
+
+        });
+
+    } else {
+
+      const sourceInput =
+        node.querySelector(".value-input");
+
+      const targetInput =
+        clone.querySelector(".value-input");
+
+
+      if (
+        sourceInput &&
+        targetInput
+      ) {
+
+        targetInput.value =
+          sourceInput.value;
+
+      }
+
+    }
+
+
+    return clone;
+  }
+
+
+  /* ==================================================
+     VALUE PARSER
+  ================================================== */
+
+  function getNodeValue(node) {
+
+    const type =
+      node.dataset.type;
+
+
+    if (type === "string") {
+
+      return (
+        node.querySelector(
+          ".value-input"
+        )?.value ?? ""
+      );
+
+    }
+
+
+    if (type === "number") {
+
+      const raw =
+        node.querySelector(
+          ".value-input"
+        )?.value ?? "";
+
+
+      if (!raw.trim()) {
+        return 0;
+      }
+
+
+      const number =
+        Number(raw);
+
+
+      return Number.isFinite(number)
+        ? number
+        : 0;
+
+    }
+
+
+    if (type === "boolean") {
+
+      const raw =
+        (
+          node.querySelector(
+            ".value-input"
+          )?.value || ""
+        )
+          .trim()
+          .toLowerCase();
+
+
+      return (
+        raw === "true" ||
+        raw === "1" ||
+        raw === "yes"
+      );
+
+    }
+
+
+    if (type === "null") {
+      return null;
+    }
+
+
+    const children =
+      node.querySelector(
+        ":scope > .node-inner > .children"
+      );
+
+
+    if (type === "object") {
+
+      const result = {};
+
+
+      children
+        .querySelectorAll(
+          ":scope > .node"
+        )
+        .forEach(child => {
+
+          const key =
+            child.querySelector(
+              ".key-input"
+            )?.value.trim();
+
+
+          if (!key) return;
+
+
+          result[key] =
+            getNodeValue(child);
+
+        });
+
+
+      return result;
+    }
+
+
+    if (type === "array") {
+
+      const result = [];
+
+
+      children
+        .querySelectorAll(
+          ":scope > .node"
+        )
+        .forEach(child => {
+
+          result.push(
+            getNodeValue(child)
+          );
+
+        });
+
+
+      return result;
+    }
+
+
+    return null;
+  }
+
+
+  /* ==================================================
+     ROOT JSON
+  ================================================== */
+
+  function getJSON() {
+
+    const result = {};
+
+
+    rootContainer
+      .querySelectorAll(
+        ":scope > .node"
+      )
+      .forEach(node => {
+
+        const key =
+          node.querySelector(
+            ".key-input"
+          )?.value.trim();
+
+
+        if (!key) return;
+
+
+        result[key] =
+          getNodeValue(node);
+
+      });
+
+
+    return result;
+  }
+
+
+  /* ==================================================
+     BUILD TREE FROM JSON
+  ================================================== */
+
+  function createNodeFromValue(
+    key,
+    value
+  ) {
+
+    let type;
+
+
+    if (value === null) {
+
+      type = "null";
+
+    } else if (Array.isArray(value)) {
+
+      type = "array";
+
+    } else if (
+      typeof value === "object"
+    ) {
+
+      type = "object";
+
+    } else if (
+      typeof value === "number"
+    ) {
+
+      type = "number";
+
+    } else if (
+      typeof value === "boolean"
+    ) {
+
+      type = "boolean";
+
+    } else {
+
+      type = "string";
+
+    }
+
+
+    const node =
+      createNode(
+        type,
+        key
+      );
+
+
+    if (
+      type === "object" ||
+      type === "array"
+    ) {
+
+      const children =
+        node.querySelector(
+          ".children"
+        );
+
+
+      if (type === "object") {
+
+        Object.entries(value)
+          .forEach(
+            ([childKey, childValue]) => {
+
+              children.appendChild(
+                createNodeFromValue(
+                  childKey,
+                  childValue
+                )
+              );
+
+            }
+          );
+
+      } else {
+
+        value.forEach(
+          item => {
+
+            children.appendChild(
+              createNodeFromValue(
+                "",
+                item
+              )
+            );
+
+          }
+        );
+
+      }
+
+    } else {
+
+      const input =
+        node.querySelector(
+          ".value-input"
+        );
+
+
+      if (type === "null") {
+
+        input.disabled = true;
+        input.placeholder = "null";
+
+      } else if (
+        type === "boolean"
+      ) {
+
+        input.value =
+          value ? "true" : "false";
+
+      } else {
+
+        input.value =
+          String(value);
+
+      }
+
+    }
+
+
+    return node;
+  }
+
+
+  function buildFromObject(
+    object,
+    container
+  ) {
+
+    container.innerHTML = "";
+
+    Object.entries(object)
+      .forEach(
+        ([key, value]) => {
+
+          container.appendChild(
+            createNodeFromValue(
+              key,
+              value
+            )
+          );
+
+        }
+      );
+
+    updatePreview();
+  }
+
+
+  /* ==================================================
+     LIVE STATISTICS
+  ================================================== */
+
+  function analyzeValue(
+    value,
+    depth = 0,
+    stats = {
+      keys: 0,
+      objects: 0,
+      arrays: 0,
+      depth: 0
+    }
+  ) {
+
+    stats.depth =
+      Math.max(
+        stats.depth,
+        depth
+      );
+
+
+    if (Array.isArray(value)) {
+
+      stats.arrays++;
+
+
+      value.forEach(
+        item =>
+          analyzeValue(
+            item,
+            depth + 1,
+            stats
+          )
+      );
+
+
+      return stats;
+    }
+
+
+    if (
+      value !== null &&
+      typeof value === "object"
+    ) {
+
+      stats.objects++;
+
+
+      Object.entries(value)
+        .forEach(
+          ([key, child]) => {
+
+            stats.keys++;
+
+
+            analyzeValue(
+              child,
+              depth + 1,
+              stats
+            );
+
+          }
+        );
+
+    }
+
+
+    return stats;
+  }
+
+
+  /* ==================================================
+     PREVIEW
+  ================================================== */
+
+  function updatePreview() {
+
+    const data =
+      getJSON();
+
+
+    const output =
+      formatMode === "pretty"
+        ? JSON.stringify(
+            data,
+            null,
+            2
+          )
+        : JSON.stringify(data);
+
+
+    preview.textContent =
+      output;
+
+
+    const bytes =
+      new Blob([output]).size;
+
+
+    jsonSize.textContent =
+      bytes < 1024
+        ? `${bytes} bytes`
+        : `${(
+            bytes / 1024
+          ).toFixed(2)} KB`;
+
+
+    const count =
+      rootContainer.querySelectorAll(
+        ".node"
+      ).length;
+
+
+    fieldCount.textContent =
+      `${count} ${
+        count === 1
+          ? "field"
+          : "fields"
+      }`;
+
+
+    /* TERTIARY #1 */
+
+    const stats =
+      analyzeValue(data);
+
+
+    statKeys.textContent =
+      stats.keys;
+
+
+    statObjects.textContent =
+      Math.max(
+        0,
+        stats.objects - 1
+      );
+
+
+    statArrays.textContent =
+      stats.arrays;
+
+
+    statDepth.textContent =
+      Object.keys(data).length
+        ? Math.max(
+            0,
+            stats.depth
+          )
+        : 0;
+
+
+    applySearch();
+
+  }
+
+
+  /* ==================================================
+     ADD ROOT NODES
+  ================================================== */
+
+  function addRoot(type) {
+
+    rootContainer.appendChild(
+      createNode(type)
+    );
+
+
+    updatePreview();
+    pushHistory();
+
+  }
+
+
+  document
+    .getElementById("addFieldBtn")
+    .addEventListener(
+      "click",
+      () => addRoot("string")
+    );
+
+
+  document
+    .getElementById("addObjectBtn")
+    .addEventListener(
+      "click",
+      () => addRoot("object")
+    );
+
+
+  document
+    .getElementById("addArrayBtn")
+    .addEventListener(
+      "click",
+      () => addRoot("array")
+    );
+
+
+  /* ==================================================
+     CLEAR
+  ================================================== */
+
+document
+  .getElementById("clearBtn")
+  .addEventListener(
+    "click",
+    () => {
+
+      if (
+        !rootContainer.children.length
+      ) return;
+
+      document
+        .getElementById("clearOverlay")
+        .classList.add("active");
+
+    }
+  );
+
+
+/* ================================
+   CLEAR MODAL
+================================ */
+
+const clearOverlay =
+  document.getElementById("clearOverlay");
+
+const clearCancel =
+  document.getElementById("clearCancel");
+
+const clearConfirm =
+  document.getElementById("clearConfirm");
+
+
+function closeClearModal() {
+  clearOverlay.classList.remove("active");
+}
+
+
+/* CANCEL */
+
+clearCancel.addEventListener(
+  "click",
+  closeClearModal
+);
+
+
+/* CLICK OUTSIDE */
+
+clearOverlay.addEventListener(
+  "click",
+  (e) => {
+
+    if (
+      e.target === clearOverlay
+    ) {
+      closeClearModal();
+    }
+
+  }
+);
+
+
+/* CONFIRM CLEAR */
+
+clearConfirm.addEventListener(
+  "click",
+  () => {
+
+    rootContainer.innerHTML = "";
+
+    updatePreview();
+    pushHistory();
+
+    status.textContent =
+      "Builder cleared.";
+
+    closeClearModal();
+
+  }
+);
+
+
+  /* ==================================================
+     COPY
+  ================================================== */
+
+  document
+    .getElementById("copyBtn")
+    .addEventListener(
+      "click",
+      async () => {
+
+        try {
+
+          await navigator.clipboard.writeText(
+            preview.textContent
+          );
+
+
+          status.textContent =
+            "JSON copied to clipboard.";
+
+          status.className =
+            "status success";
+
+        } catch {
+
+          status.textContent =
+            "Clipboard access failed.";
+
+          status.className =
+            "status error";
+
+        }
+
+      }
+    );
+
+
+  /* ==================================================
+     FORMAT
+  ================================================== */
+
+  document
+    .getElementById("formatBtn")
+    .addEventListener(
+      "click",
+      () => {
+
+        formatMode = "pretty";
+
+        updatePreview();
+
+        status.textContent =
+          "JSON formatted.";
+
+        status.className =
+          "status";
+
+      }
+    );
+
+
+  /* ==================================================
+     MINIFY
+  ================================================== */
+
+  document
+    .getElementById("minifyBtn")
+    .addEventListener(
+      "click",
+      () => {
+
+        formatMode = "minified";
+
+        updatePreview();
+
+        status.textContent =
+          "JSON minified.";
+
+        status.className =
+          "status";
+
+      }
+    );
+
+
+  /* ==================================================
+     DOWNLOAD
+  ================================================== */
+
+  document
+    .getElementById("downloadBtn")
+    .addEventListener(
+      "click",
+      () => {
+
+        const safeName =
+          getSafeFilename();
+
+
+        const output =
+          formatMode === "pretty"
+            ? JSON.stringify(
+                getJSON(),
+                null,
+                2
+              )
+            : JSON.stringify(
+                getJSON()
+              );
+
+
+        const blob =
+          new Blob(
+            [output],
+            {
+              type:
+                "application/json"
+            }
+          );
+
+
+        const url =
+          URL.createObjectURL(blob);
+
+
+        const anchor =
+          document.createElement("a");
+
+
+        anchor.href = url;
+
+        anchor.download =
+          `${safeName}.json`;
+
+
+        document.body.appendChild(
+          anchor
+        );
+
+
+        anchor.click();
+
+        anchor.remove();
+
+
+        URL.revokeObjectURL(url);
+
+
+        status.textContent =
+          `${safeName}.json downloaded.`;
+
+
+        status.className =
+          "status success";
+
+      }
+    );
+
+
+  function getSafeFilename() {
+
+    let name =
+      filename.value.trim();
+
+
+    if (!name) {
+      name = "data";
+    }
+
+
+    name =
+      name
+        .replace(
+          /[<>:"/\\|?*]+/g,
+          "_"
+        )
+        .replace(
+          /\.json$/i,
+          ""
+        );
+
+
+    return name || "data";
+  }
+
+
+  /* ==================================================
+     IMPORT
+  ================================================== */
+
+  document
+    .getElementById("importBtn")
+    .addEventListener(
+      "click",
+      () => {
+
+        importModal.classList.add(
+          "active"
+        );
+
+        importInput.focus();
+
+      }
+    );
+
+
+  function closeImport() {
+
+    importModal.classList.remove(
+      "active"
+    );
+
+  }
+
+
+  document
+    .getElementById("closeModal")
+    .addEventListener(
+      "click",
+      closeImport
+    );
+
+
+  document
+    .getElementById("cancelImport")
+    .addEventListener(
+      "click",
+      closeImport
+    );
+
+
+  importModal.addEventListener(
+    "click",
+    event => {
+
+      if (
+        event.target === importModal
+      ) {
+
+        closeImport();
+
+      }
+
+    }
+  );
+
+
+  document
+    .getElementById("confirmImport")
+    .addEventListener(
+      "click",
+      () => {
+
+        const raw =
+          importInput.value.trim();
+
+
+        if (!raw) {
+
+          status.textContent =
+            "Import failed: empty input.";
+
+          status.className =
+            "status error";
+
+          return;
+
+        }
+
+
+        try {
+
+          const parsed =
+            JSON.parse(raw);
+
+
+          if (
+            parsed === null ||
+            typeof parsed !== "object" ||
+            Array.isArray(parsed)
+          ) {
+
+            throw new Error(
+              "Root JSON must be an object."
+            );
+
+          }
+
+
+          buildFromObject(
+            parsed,
+            rootContainer
+          );
+
+
+          formatMode = "pretty";
+
+          pushHistory();
+
+          closeImport();
+
+          importInput.value = "";
+
+
+          status.textContent =
+            "JSON imported successfully.";
+
+          status.className =
+            "status success";
+
+        } catch (error) {
+
+          status.textContent =
+            `Import failed: ${
+              error.message
+            }`;
+
+          status.className =
+            "status error";
+
+        }
+
+      }
+    );
+
+
+  /* ==================================================
+     SAVE WORKSPACE
+     MAIN #5
+  ================================================== */
+
+  const WORKSPACE_KEY =
+    "json-builder-workspace-v3";
+
+
+  document
+    .getElementById("saveBtn")
+    .addEventListener(
+      "click",
+      () => {
+
+        const workspace = {
+
+          version: 3,
+
+          filename:
+            getSafeFilename(),
+
+          data:
+            getJSON(),
+
+          savedAt:
+            new Date().toISOString()
+
+        };
+
+
+        localStorage.setItem(
+          WORKSPACE_KEY,
+          JSON.stringify(workspace)
+        );
+
+
+        status.textContent =
+          "Workspace saved locally.";
+
+        status.className =
+          "status success";
+
+      }
+    );
+
+
+  /* ==================================================
+     LOAD WORKSPACE
+     MAIN #5
+  ================================================== */
+
+  document
+    .getElementById("loadBtn")
+    .addEventListener(
+      "click",
+      () => {
+
+        const raw =
+          localStorage.getItem(
+            WORKSPACE_KEY
+          );
+
+
+        if (!raw) {
+
+          status.textContent =
+            "No saved workspace found.";
+
+          status.className =
+            "status error";
+
+          return;
+
+        }
+
+
+        try {
+
+          const workspace =
+            JSON.parse(raw);
+
+
+          buildFromObject(
+            workspace.data || {},
+            rootContainer
+          );
+
+
+          filename.value =
+            workspace.filename ||
+            "data";
+
+
+          pushHistory();
+
+
+          status.textContent =
+            "Workspace loaded.";
+
+          status.className =
+            "status success";
+
+        } catch {
+
+          status.textContent =
+            "Saved workspace is corrupted.";
+
+          status.className =
+            "status error";
+
+        }
+
+      }
+    );
+
+
+  /* ==================================================
+     UNDO
+     MAIN #7
+  ================================================== */
+
+  document
+    .getElementById("undoBtn")
+    .addEventListener(
+      "click",
+      () => {
+
+        if (
+          historyIndex <= 0
+        ) return;
+
+
+        historyIndex--;
+
+        const snapshot =
+          history[historyIndex];
+
+
+        historyLock = true;
+
+
+        try {
+
+          buildFromObject(
+            JSON.parse(snapshot),
+            rootContainer
+          );
+
+        } finally {
+
+          historyLock = false;
+
+        }
+
+
+        updatePreview();
+
+        updateHistoryButtons();
+
+
+        status.textContent =
+          "Undo.";
+
+      }
+    );
+
+
+  /* ==================================================
+     REDO
+     MAIN #7
+  ================================================== */
+
+  document
+    .getElementById("redoBtn")
+    .addEventListener(
+      "click",
+      () => {
+
+        if (
+          historyIndex >=
+          history.length - 1
+        ) return;
+
+
+        historyIndex++;
+
+        const snapshot =
+          history[historyIndex];
+
+
+        historyLock = true;
+
+
+        try {
+
+          buildFromObject(
+            JSON.parse(snapshot),
+            rootContainer
+          );
+
+        } finally {
+
+          historyLock = false;
+
+        }
+
+
+        updatePreview();
+
+        updateHistoryButtons();
+
+
+        status.textContent =
+          "Redo.";
+
+      }
+    );
+
+
+  /* ==================================================
+     SEARCH
+     TERTIARY #2
+  ================================================== */
+
+  searchInput.addEventListener(
+    "input",
+    () => {
+
+      searchTerm =
+        searchInput.value
+          .trim()
+          .toLowerCase();
+
+
+      applySearch();
+
+    }
+  );
+
+
+  function applySearch() {
+
+    const nodes =
+      rootContainer.querySelectorAll(
+        ".node"
+      );
+
+
+    nodes.forEach(node => {
+
+      if (!searchTerm) {
+
+        node.classList.remove(
+          "hidden-search"
+        );
+
+        return;
+
+      }
+
+
+      const key =
+        node.querySelector(
+          ".key-input"
+        )?.value
+          .toLowerCase() || "";
+
+
+      const value =
+        node.querySelector(
+          ".value-input"
+        )?.value
+          .toLowerCase() || "";
+
+
+      const matches =
+        key.includes(searchTerm) ||
+        value.includes(searchTerm);
+
+
+      node.classList.toggle(
+        "hidden-search",
+        !matches
+      );
+
+    });
+
+  }
+
+
+  /* ==================================================
+     SORT KEYS
+     TERTIARY #3
+  ================================================== */
+
+  document
+    .getElementById("sortBtn")
+    .addEventListener(
+      "click",
+      () => {
+
+        sortContainer(
+          rootContainer
+        );
+
+
+        updatePreview();
+
+        pushHistory();
+
+
+        status.textContent =
+          "Keys sorted alphabetically.";
+
+      }
+    );
+
+
+  function sortContainer(
+    container
+  ) {
+
+    const nodes =
+      [...container.querySelectorAll(
+        ":scope > .node"
+      )];
+
+
+    nodes.sort(
+      (a, b) => {
+
+        const aKey =
+          a.querySelector(
+            ".key-input"
+          )?.value
+            .trim()
+            .toLowerCase() || "";
+
+
+        const bKey =
+          b.querySelector(
+            ".key-input"
+          )?.value
+            .trim()
+            .toLowerCase() || "";
+
+
+        return aKey.localeCompare(
+          bKey
+        );
+
+      }
+    );
+
+
+    nodes.forEach(node => {
+
+      container.appendChild(node);
+
+
+      const children =
+        node.querySelector(
+          ":scope > .node-inner > .children"
+        );
+
+
+      if (children) {
+
+        sortContainer(
+          children
+        );
+
+      }
+
+    });
+
+  }
+
+
+  /* ==================================================
+     EXPAND ALL
+     TERTIARY #4
+  ================================================== */
+
+  document
+    .getElementById("expandBtn")
+    .addEventListener(
+      "click",
+      () => {
+
+        rootContainer
+          .querySelectorAll(
+            ".node.collapsed"
+          )
+          .forEach(node => {
+
+            node.classList.remove(
+              "collapsed"
+            );
+
+          });
+
+
+        status.textContent =
+          "All containers expanded.";
+
+      }
+    );
+
+
+  /* ==================================================
+     COLLAPSE ALL
+     TERTIARY #4
+  ================================================== */
+
+  document
+    .getElementById("collapseBtn")
+    .addEventListener(
+      "click",
+      () => {
+
+        rootContainer
+          .querySelectorAll(
+            ".node"
+          )
+          .forEach(node => {
+
+            if (
+              node.querySelector(
+                ".children"
+              )
+            ) {
+
+              node.classList.add(
+                "collapsed"
+              );
+
+            }
+
+          });
+
+
+        status.textContent =
+          "All containers collapsed.";
+
+      }
+    );
+
+
+  /* ==================================================
+     FILENAME PERSISTENCE
+  ================================================== */
+
+  const FILE_KEY =
+    "json-builder-filename-v3";
+
+
+  const savedFilename =
+    localStorage.getItem(
+      FILE_KEY
+    );
+
+
+  if (savedFilename) {
+    filename.value =
+      savedFilename;
+  }
+
+
+  filename.addEventListener(
+    "input",
+    () => {
+
+      localStorage.setItem(
+        FILE_KEY,
+        filename.value
+      );
+
+    }
+  );
+
+
+  /* ==================================================
+     ESCAPE ATTRIBUTE
+  ================================================== */
+
+  function escapeAttribute(value) {
+
+    return String(value)
+      .replace(
+        /&/g,
+        "&amp;"
+      )
+      .replace(
+        /"/g,
+        "&quot;"
+      )
+      .replace(
+        /</g,
+        "&lt;"
+      )
+      .replace(
+        />/g,
+        "&gt;"
+      );
+
+  }
+
+
+  /* ==================================================
+     DEMO DATA
+  ================================================== */
+
+  const exampleData = {
+
+    project: "Example App",
+
+    version: 1,
+
+    enabled: true,
+
+    features: [
+
+      "search",
+
+      "import",
+
+      "export",
+
+      "storage"
+
+    ],
+
+    settings: {
+
+      theme: "dark",
+
+      notifications: false,
+
+      limits: {
+
+        users: 100,
+
+        files: 25
+
+      }
+
+    },
+
+    metadata: {
+
+      category: "demo",
+
+      tags: [
+
+        "json",
+
+        "builder",
+
+        "web"
+
+      ]
+
+    }
+
+  };
+
+
+  buildFromObject(
+    exampleData,
+    rootContainer
+  );
+
+
+  /* ==================================================
+     INITIAL HISTORY
+  ================================================== */
+
+  history.length = 0;
+
+  history.push(
+    currentDataSnapshot()
+  );
+
+  historyIndex = 0;
+
+  updateHistoryButtons();
+
+  updatePreview();
+
+
+  /* ==================================================
+     KEYBOARD SHORTCUTS
+  ================================================== */
+
+  document.addEventListener(
+    "keydown",
+    event => {
+
+      const modifier =
+        event.ctrlKey ||
+        event.metaKey;
+
+
+      /* SAVE */
+
+      if (
+        modifier &&
+        event.key.toLowerCase() === "s"
+      ) {
+
+        event.preventDefault();
+
+        document
+          .getElementById("saveBtn")
+          .click();
+
+      }
+
+
+      /* IMPORT */
+
+      if (
+        modifier &&
+        event.key.toLowerCase() === "o"
+      ) {
+
+        event.preventDefault();
+
+        document
+          .getElementById("importBtn")
+          .click();
+
+      }
+
+
+      /* UNDO */
+
+      if (
+        modifier &&
+        !event.shiftKey &&
+        event.key.toLowerCase() === "z"
+      ) {
+
+        event.preventDefault();
+
+        document
+          .getElementById("undoBtn")
+          .click();
+
+      }
+
+
+      /* REDO */
+
+      if (
+        modifier &&
+        event.shiftKey &&
+        event.key.toLowerCase() === "z"
+      ) {
+
+        event.preventDefault();
+
+        document
+          .getElementById("redoBtn")
+          .click();
+
+      }
+
+    }
+  );
+
+</script>
+
+</body>
+</html>
+
